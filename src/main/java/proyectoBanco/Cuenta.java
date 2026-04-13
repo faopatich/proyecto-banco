@@ -1,11 +1,11 @@
 package proyectoBanco;
 
 public class Cuenta {
-    private TipoCuenta tipoCuenta;
-    private String nombrePropietario;
-    private String direccion;
+    private final TipoCuenta tipoCuenta;
+    private final String nombrePropietario;
+    private final String direccion;
     private int saldo;
-    private Banco banco;
+    private final Banco banco;
 
     Cuenta(TipoCuenta tipoCuenta, String nombrePropietario, String direccion, Banco banco) {
         this.tipoCuenta = tipoCuenta;
@@ -23,9 +23,6 @@ public class Cuenta {
         System.out.println("    - Saldo: " + this.saldo);
     }
 
-    public String obtenerNombrePropietario() {
-        return this.nombrePropietario;
-    }
     public int obtenerSaldo() {
         return this.saldo;
     }
