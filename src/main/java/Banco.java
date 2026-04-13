@@ -57,4 +57,12 @@ public class Banco {
         cuentaReceptor.guardar(cantidad);
         return true;
     }
+
+    public void verBalance(String usuario) {
+        var cuenta = this.obtenerPorUsuario(usuario);
+        if (cuenta == null) {
+            return;
+        }
+        cuenta.verBalance();
+    }
 }

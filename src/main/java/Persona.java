@@ -15,4 +15,7 @@ public class Persona {
     public boolean transferir(String receptor, int cantidad) {
         return this.banco.transferir(this.nombreUsuario, receptor, cantidad);
     }
+    public void verBalance() {
+        this.banco.verBalance(this.nombreUsuario);
+    }
 }

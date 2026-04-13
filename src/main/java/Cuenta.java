@@ -11,6 +11,14 @@ public class Cuenta {
         this.saldo = 0;
     }
 
+    public void verBalance() {
+        System.out.println("Balance de cuenta.");
+        System.out.println("    - Tipo de cuenta: " + this.tipoCuenta);
+        System.out.println("    - Propietario: " + this.nombrePropietario);
+        System.out.println("    - Direccion: " + this.direccion);
+        System.out.println("    - Saldo: " + this.saldo);
+    }
+
     public String obtenerNombrePropietario() {
         return this.nombrePropietario;
     }
