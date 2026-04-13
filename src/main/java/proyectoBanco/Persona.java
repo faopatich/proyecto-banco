@@ -6,7 +6,7 @@ public class Persona {
     private ServicioBanco servicioBanco;
     private Cuenta cuenta;
 
-    Persona(String nombreUsuario, String direccion, ServicioBanco servicioBanco) {
+    public Persona(String nombreUsuario, String direccion, ServicioBanco servicioBanco) {
         this.nombreUsuario = nombreUsuario;
         this.direccion = direccion;
         this.servicioBanco = servicioBanco;

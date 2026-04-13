@@ -19,7 +19,7 @@ public class Banco {
         return null;
     }
 
-    Banco() {
+    public Banco() {
         this.primeraCuenta = null;
         this.segundaCuenta = null;
     }
