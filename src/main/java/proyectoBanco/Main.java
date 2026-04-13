@@ -4,12 +4,17 @@ import proyectoBanco.comandos.ServicioComando;
 
 void main() {
     var banco = new Banco();
-    var servicioBanco = new ServicioBanco(banco);
     var servicioComando = new ServicioComando();
     var administrador = new Administrador(banco, servicioComando);
+    var servicioBanco = new ServicioBanco(banco);
+
+    banco.cambiarAdministrador(administrador);
 
     var persona1 = new Persona("Mateo", "La Boca", servicioBanco);
     var persona2 = new Persona("Carlos", "Tablada", servicioBanco);
+
+    persona1.solicitarCrearCuenta();
+    persona2.solicitarCrearCuenta();
 
     administrador.procesarComando(); // Crear cuenta de Mateo
     administrador.procesarComando(); // Crear cuenta de Carlos

@@ -13,6 +13,17 @@ public class Persona {
         this.cuenta = servicioBanco.obtenerCuenta(this.nombreUsuario);
     }
 
+    public void solicitarCrearCuenta() {
+        this.servicioBanco.solicitarCrearCuenta(
+                TipoCuenta.CuentaCorriente,
+                this.nombreUsuario,
+                this.direccion
+        );
+    }
+    public void solicitarEliminarCuenta() {
+        this.servicioBanco.solicitarEliminarCuenta(this.nombreUsuario);
+    }
+
     public void actualizarCuenta() {
         this.cuenta = this.servicioBanco.obtenerCuenta(this.nombreUsuario);
     }
