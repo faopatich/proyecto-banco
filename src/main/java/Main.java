@@ -1,10 +1,13 @@
 void main() {
     var banco = new Banco();
+    var servicioComando = new ServicioComando();
+    var administrador = new Administrador(banco, servicioComando);
+
+    administrador.procesarComando(); // Crear cuenta de Mateo
+    administrador.procesarComando(); // Crear cuenta de Carlos
+
     var persona1 = new Persona("Mateo", "La Boca", banco);
     var persona2 = new Persona("Carlos", "Tablada", banco);
-
-    persona1.crearCuenta(TipoCuenta.CuentaCorriente);
-    persona2.crearCuenta(TipoCuenta.CuentaCorriente);
 
     persona1.verBalance();
     persona2.verBalance();
