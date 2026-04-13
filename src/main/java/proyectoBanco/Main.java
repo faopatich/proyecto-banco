@@ -1,3 +1,5 @@
+import proyectoBanco.*;
+
 void main() {
     var banco = new Banco();
     var servicioBanco = new ServicioBanco(banco);

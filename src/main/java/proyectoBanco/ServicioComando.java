@@ -1,3 +1,5 @@
+package proyectoBanco;
+
 import java.util.Scanner;
 
 public class ServicioComando {

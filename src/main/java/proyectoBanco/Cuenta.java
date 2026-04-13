@@ -1,3 +1,5 @@
+package proyectoBanco;
+
 public class Cuenta {
     private TipoCuenta tipoCuenta;
     private String nombrePropietario;

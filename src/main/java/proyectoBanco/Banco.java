@@ -1,3 +1,5 @@
+package proyectoBanco;
+
 public class Banco {
     private Cuenta primeraCuenta;
     private Cuenta segundaCuenta;

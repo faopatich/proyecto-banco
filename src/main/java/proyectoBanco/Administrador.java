@@ -1,3 +1,5 @@
+package proyectoBanco;
+
 public class Administrador {
     private Banco banco;
     private ServicioComando servicioComando;

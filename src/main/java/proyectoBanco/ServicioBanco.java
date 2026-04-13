@@ -1,3 +1,5 @@
+package proyectoBanco;
+
 public class ServicioBanco {
     private Banco banco;
 

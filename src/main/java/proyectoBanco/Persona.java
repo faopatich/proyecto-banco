@@ -1,3 +1,5 @@
+package proyectoBanco;
+
 public class Persona {
     private String nombreUsuario;
     private String direccion;
