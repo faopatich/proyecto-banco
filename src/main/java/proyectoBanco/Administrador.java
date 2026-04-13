@@ -1,13 +1,13 @@
 package proyectoBanco;
 
-import proyectoBanco.comandos.ComandoCrear;
-import proyectoBanco.comandos.ComandoEliminar;
-import proyectoBanco.comandos.ComandoSalir;
-import proyectoBanco.comandos.ServicioComando;
+import proyectoBanco.comandos.*;
+
+import java.util.List;
 
 public class Administrador {
     private Banco banco;
     private ServicioComando servicioComando;
+    private List<Comando> peticionesPendientes;
 
     private void crearCuenta(TipoCuenta tipoCuenta, String usuario, String direccion) {
         this.banco.crearCuenta(tipoCuenta, usuario, direccion);
@@ -37,7 +37,23 @@ public class Administrador {
     }
 
     public void procesarComando() {
-        var comando = this.servicioComando.obtenerComando();
+        Comando comando;
+        if (this.peticionesPendientes.isEmpty()) {
+            comando = this.servicioComando.obtenerComando();
+        } else {
+            comando = this.peticionesPendientes.removeFirst();
+        }
         comando.manejar(this);
+    }
+
+    public void solicitarCrearCuenta(TipoCuenta tipoCuenta, String usuario, String direccion) {
+        this.peticionesPendientes.add(
+                new ComandoCrear(tipoCuenta, usuario, direccion)
+        );
+    }
+    public void solicitarEliminarCuenta(String usuario) {
+        this.peticionesPendientes.add(
+                new ComandoEliminar(usuario)
+        );
     }
 }
