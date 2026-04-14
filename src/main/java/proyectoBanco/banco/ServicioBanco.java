@@ -11,20 +11,16 @@ public class ServicioBanco {
         this.sucursal = sucursal;
     }
 
+    // Operaciones de cliente
     public void solicitarCrearCuenta(TipoCuenta tipoCuenta, CredencialesUsuario credencialesUsuario) {
         this.sucursal.solicitarCrearCuenta(tipoCuenta, credencialesUsuario);
     }
     public void solicitarEliminarCuenta(CredencialesUsuario credencialesUsuario) {
         this.sucursal.solicitarEliminarCuenta(credencialesUsuario);
     }
-
-    public void refrescarPerfilUsuario() {
-        // Por ahora no cambia...
-    }
     public Cuenta obtenerEstadoCuenta(CredencialesUsuario credencialesUsuario) {
         return this.sucursal.obtenerEstadoCuenta(credencialesUsuario);
     }
-
     public boolean depositar(int cantidad, CredencialesUsuario credencialesUsuario) {
         return this.sucursal.intentarHacerDeposito(cantidad, credencialesUsuario);
     }
