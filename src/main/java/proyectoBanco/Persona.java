@@ -5,15 +5,13 @@ import proyectoBanco.cuentas.TipoCuenta;
 
 public class Persona {
     private final String nombreUsuario;
-    private final String direccion;
     private final ServicioBanco servicioBanco;
     private Cuenta cuenta;
 
-    public Persona(String nombreUsuario, String direccion, ServicioBanco servicioBanco) {
+    public Persona(String nombreUsuario, ServicioBanco servicioBanco) {
         this.nombreUsuario = nombreUsuario;
-        this.direccion = direccion;
         this.servicioBanco = servicioBanco;
-        this.cuenta = servicioBanco.obtenerCuenta(this.nombreUsuario);
+        this.cuenta = null;
     }
 
     public void solicitarCrearCuenta(TipoCuenta tipoCuenta) {

@@ -13,8 +13,8 @@ class Main {
 
         banco.cambiarAdministrador(administrador);
 
-        var persona1 = new Persona("Mateo", "La Boca", servicioBanco);
-        var persona2 = new Persona("Carlos", "Tablada", servicioBanco);
+        var persona1 = new Persona("Mateo", servicioBanco);
+        var persona2 = new Persona("Carlos", servicioBanco);
 
         persona1.solicitarCrearCuenta(TipoCuenta.CuentaCorriente);
         persona2.solicitarCrearCuenta(TipoCuenta.CuentaAhorro);
