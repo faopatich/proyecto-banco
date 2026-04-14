@@ -21,7 +21,7 @@ public class Cliente extends Usuario {
         return this.servicioBanco.retirar(cantidad, super.credencialesUsuario);
     }
     public boolean transferir(String receptor, int cantidad) {
-        return this.servicioBanco.transferir(receptor, cantidad, super.credencialesUsuario);
+        return this.servicioBanco.transferir(super.credencialesUsuario, receptor, cantidad);
     }
     public void verEstadoCuenta() {
         if (this.vistaCuenta == null) {
