@@ -40,7 +40,13 @@ public class Sucursal {
         this.cuentasActivas.remove(credenciales.usuario());
     }
 
-    public boolean transferir(CredencialesUsuario credenciales, String receptor, int cantidad) {
+    public boolean intentarHacerDeposito(int cantidad, CredencialesUsuario credencialesUsuario) {
+        return this.cuentasActivas.get(credencialesUsuario.usuario()).depositar(cantidad);
+    }
+    public boolean intentarHacerRetiro(int cantidad, CredencialesUsuario credencialesUsuario) {
+        return this.cuentasActivas.get(credencialesUsuario.usuario()).retirar(cantidad);
+    }
+    public boolean intentarHacerTransferencia(String receptor, int cantidad, CredencialesUsuario credenciales) {
         var cuentaEmisor = this.cuentasActivas.get(credenciales.usuario());
         var cuentaReceptor = this.cuentasActivas.get(receptor);
         if (cuentaEmisor == null || cuentaReceptor == null) {

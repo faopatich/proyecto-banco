@@ -48,4 +48,8 @@ public class PerfilUsuario {
     public void cambiarDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public CredencialesUsuario generarCredenciales() {
+        return new CredencialesUsuario(this.nombre, this.contr);
+    }
 }
