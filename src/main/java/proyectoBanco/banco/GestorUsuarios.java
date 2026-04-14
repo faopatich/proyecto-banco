@@ -1,5 +1,6 @@
 package proyectoBanco.banco;
 
+import proyectoBanco.usuarios.CredencialesUsuario;
 import proyectoBanco.usuarios.PerfilUsuario;
 import proyectoBanco.usuarios.RolUsuario;
 
@@ -15,6 +16,13 @@ public class GestorUsuarios {
         this.perfilesUsuarios = new HashMap<>();
     }
 
+    public boolean verificarCredencialesUsuario(CredencialesUsuario credencialesUsuario) {
+        var perfilUsuario = this.perfilesUsuarios.get(credencialesUsuario.usuario());
+        if (perfilUsuario == null) {
+            return false;
+        }
+        return perfilUsuario.obtenerContr() == credencialesUsuario.contr();
+    }
     public boolean agregarUsuario(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
         if (this.perfilesUsuarios.containsKey(perfilUsuario.obtenerNombre())) {
             return false;
