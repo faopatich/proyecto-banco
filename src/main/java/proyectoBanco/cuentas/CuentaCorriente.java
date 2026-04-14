@@ -32,4 +32,16 @@ public class CuentaCorriente extends Cuenta {
         this.saldo = (int) Math.floor(this.saldo * this.interesPorGiro);
         return true;
     }
+
+    @Override
+    public boolean transferir(Cuenta cuenta, int cantidad) {
+        if (this.saldo < 0) {
+            return false;
+        }
+        if (cuenta.depositar(cantidad)) {
+            this.retirar(cantidad);
+            return true;
+        }
+        return false;
+    }
 }

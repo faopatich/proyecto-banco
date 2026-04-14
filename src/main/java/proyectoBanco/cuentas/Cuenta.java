@@ -7,4 +7,5 @@ public abstract class Cuenta {
     public abstract void verBalance();
     public abstract boolean depositar(int cantidad);
     public abstract boolean retirar(int cantidad);
+    public abstract boolean transferir(Cuenta cuenta, int cantidad);
 }

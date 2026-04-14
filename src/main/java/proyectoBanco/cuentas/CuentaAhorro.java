@@ -28,4 +28,16 @@ public class CuentaAhorro extends Cuenta {
         }
         return false;
     }
+
+    @Override
+    public boolean transferir(Cuenta cuenta, int cantidad) {
+        if (this.saldo < cantidad) {
+            return false;
+        }
+        if (cuenta.depositar(cantidad)) {
+            this.retirar(cantidad);
+            return true;
+        }
+        return false;
+    }
 }
