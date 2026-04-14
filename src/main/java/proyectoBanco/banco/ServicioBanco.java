@@ -6,10 +6,10 @@ import proyectoBanco.usuarios.CredencialesUsuario;
 
 public class ServicioBanco {
     private final Sucursal sucursal;
-    private final GestorUsuarios gestorUsuarios;
+    private final GestorUsuarios gestorUsuarios; // Es un service
 
-    private boolean verificar(CredencialesUsuario credencialesUsuario) {
-        return this.gestorUsuarios.verificarCredencialesUsuario(credencialesUsuario);
+    private boolean credencialesInvalidas(CredencialesUsuario credencialesUsuario) {
+        return !this.gestorUsuarios.verificarCredencialesUsuario(credencialesUsuario);
     }
 
     public ServicioBanco(Sucursal sucursal, GestorUsuarios gestorUsuarios) {
@@ -18,34 +18,34 @@ public class ServicioBanco {
     }
 
     // Operaciones de cliente
-    public boolean solicitarCrearCuenta(TipoCuenta tipoCuenta, CredencialesUsuario credencialesUsuario) {
-        if (!this.verificar(credencialesUsuario)) return false;
-        this.sucursal.solicitarCrearCuenta(tipoCuenta, credencialesUsuario);
+    public boolean crearCuenta(TipoCuenta tipoCuenta, CredencialesUsuario credencialesUsuario) {
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        this.sucursal.crearCuenta(tipoCuenta, credencialesUsuario);
         return true;
     }
-    public boolean solicitarEliminarCuenta(CredencialesUsuario credencialesUsuario) {
-        if (!this.verificar(credencialesUsuario)) return false;
-        this.sucursal.solicitarEliminarCuenta(credencialesUsuario);
+    public boolean eliminarCuenta(CredencialesUsuario credencialesUsuario) {
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        this.sucursal.eliminarCuenta(credencialesUsuario);
         return true;
     }
     public Cuenta obtenerEstadoCuenta(CredencialesUsuario credencialesUsuario) {
-        if (!this.verificar(credencialesUsuario)) return null;
+        if (this.credencialesInvalidas(credencialesUsuario)) return null;
         return this.sucursal.obtenerEstadoCuenta(credencialesUsuario);
     }
     public boolean depositar(int cantidad, CredencialesUsuario credencialesUsuario) {
-        if (!this.verificar(credencialesUsuario)) return false;
-        return this.sucursal.intentarHacerDeposito(cantidad, credencialesUsuario);
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        return this.sucursal.depositar(credencialesUsuario, cantidad);
     }
     public boolean retirar(int cantidad, CredencialesUsuario credencialesUsuario) {
-        if (!this.verificar(credencialesUsuario)) return false;
-        return this.sucursal.intentarHacerRetiro(cantidad, credencialesUsuario);
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        return this.sucursal.retirar(credencialesUsuario, cantidad);
     }
-    public boolean transferir(String receptor, int cantidad, CredencialesUsuario credencialesUsuario) {
-        if (!this.verificar(credencialesUsuario)) return false;
-        return this.sucursal.intentarHacerTransferencia(
+    public boolean transferir(CredencialesUsuario credencialesUsuario, String receptor, int cantidad) {
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        return this.sucursal.transferir(
+                credencialesUsuario,
                 receptor,
-                cantidad,
-                credencialesUsuario
+                cantidad
         );
     }
 }

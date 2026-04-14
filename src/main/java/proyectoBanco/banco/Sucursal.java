@@ -31,7 +31,7 @@ public class Sucursal {
     public boolean retirar(CredencialesUsuario credenciales, int cantidad) {
         return this.gestorTransacciones.manejarRetiro(credenciales.usuario(), cantidad);
     }
-    public boolean transferencia(CredencialesUsuario credenciales, String receptor, int cantidad) {
+    public boolean transferir(CredencialesUsuario credenciales, String receptor, int cantidad) {
         return this.gestorTransacciones.manejarTransferencia(credenciales.usuario(), receptor, cantidad);
     }
 }
