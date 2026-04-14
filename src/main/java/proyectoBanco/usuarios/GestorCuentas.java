@@ -35,8 +35,12 @@ public class GestorCuentas extends Usuario {
         );
         return true;
     }
-    public boolean eliminarCuenta() {
-        return false;
+    public boolean eliminarCuenta(CredencialesUsuario credencialesUsuario) {
+        if (!this.cuentas.containsKey(credencialesUsuario)) {
+            return false;
+        }
+        this.cuentas.remove(credencialesUsuario);
+        return true;
     }
     public Cuenta obtenerCuenta() {
         return new CuentaCorriente("");
