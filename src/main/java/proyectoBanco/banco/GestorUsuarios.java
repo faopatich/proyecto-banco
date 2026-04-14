@@ -21,7 +21,7 @@ public class GestorUsuarios {
         if (perfilUsuario == null) {
             return false;
         }
-        return perfilUsuario.obtenerContr() == credencialesUsuario.contr();
+        return perfilUsuario.obtenerContr().equals(credencialesUsuario.contr());
     }
     public boolean agregarUsuario(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
         if (this.perfilesUsuarios.containsKey(perfilUsuario.obtenerNombre())) {
