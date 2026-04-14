@@ -1,8 +1,6 @@
 package proyectoBanco;
 
-import proyectoBanco.administrador.Administrador;
 import proyectoBanco.banco.*;
-import proyectoBanco.comandos.ServicioComando;
 import proyectoBanco.cuentas.CreadorCuenta;
 import proyectoBanco.cuentas.Cuenta;
 import proyectoBanco.cuentas.TipoCuenta;
@@ -33,16 +31,16 @@ class Main {
 
         var usuarioGestorCuentas = new UsuarioGestorCuentas(servicioBanco, perfilGestor.generarCredenciales());
 
-        servicioBanco.crearCuenta(perfil1, TipoCuenta.CuentaAhorro);
-        servicioBanco.crearCuenta(perfil2, TipoCuenta.CuentaCorriente);
+        servicioBanco.solicitarCrearCuenta(perfil1, TipoCuenta.CuentaAhorro);
+        servicioBanco.solicitarCrearCuenta(perfil2, TipoCuenta.CuentaCorriente);
 
         var rolesGestor = new HashSet<RolUsuario>();
         rolesGestor.add(RolUsuario.GestorCuentas);
         servicioBanco.crearUsuario(perfilGestor, rolesGestor);
 
         usuarioGestorCuentas.verOperacionesPendientes();
-        usuarioGestorCuentas.resolverOperacion(0);
-        usuarioGestorCuentas.resolverOperacion(0);
+        usuarioGestorCuentas.crearCuenta(perfil1, TipoCuenta.CuentaAhorro);
+        usuarioGestorCuentas.crearCuenta(perfil2, TipoCuenta.CuentaCorriente);
 
         var clienteFalso1 = new Cliente(servicioBanco, perfilFalso1.generarCredenciales());
         clienteFalso1.actualizarVistaCuenta();

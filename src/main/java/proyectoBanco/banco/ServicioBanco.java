@@ -28,18 +28,18 @@ public class ServicioBanco {
     }
 
     // Operaciones de cliente
-    public boolean crearCuenta(PerfilUsuario perfilUsuario, TipoCuenta tipoCuenta) {
+    public boolean solicitarCrearCuenta(PerfilUsuario perfilUsuario, TipoCuenta tipoCuenta) {
         var roles = new HashSet<RolUsuario>();
         roles.add(RolUsuario.Cliente);
         if (!this.gestorUsuarios.agregarUsuarioSiNoExiste(perfilUsuario, roles)) {
             return false;
         }
-        this.sucursal.crearCuenta(tipoCuenta, perfilUsuario.generarCredenciales());
+        this.sucursal.solicitarCrearCuenta(tipoCuenta, perfilUsuario.generarCredenciales());
         return true;
     }
-    public boolean eliminarCuenta(CredencialesUsuario credencialesUsuario) {
+    public boolean solicitarEliminarCuenta(CredencialesUsuario credencialesUsuario) {
         if (this.gestorUsuarios.eliminarRolDeUsuarioSiExiste(credencialesUsuario, RolUsuario.Cliente)) return false;
-        this.sucursal.eliminarCuenta(credencialesUsuario);
+        this.sucursal.solicitarEliminarCuenta(credencialesUsuario);
         return true;
     }
     public Cuenta obtenerEstadoCuenta(CredencialesUsuario credencialesUsuario) {
@@ -64,6 +64,14 @@ public class ServicioBanco {
     }
 
     // Métodos de gestor de cuentas
+    public boolean crearCuenta(CredencialesUsuario credencialesUsuario, PerfilUsuario perfilUsuario, TipoCuenta tipoCuenta) {
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        return this.sucursal.crearCuenta(perfilUsuario.generarCredenciales(), tipoCuenta);
+    }
+    public boolean eliminarCuenta(CredencialesUsuario credencialesUsuario, PerfilUsuario perfilUsuario) {
+        if (this.credencialesInvalidas(credencialesUsuario)) return false;
+        return this.sucursal.eliminarCuenta(perfilUsuario.generarCredenciales());
+    }
     public List<String> obtenerOperacionesPendientes(CredencialesUsuario credencialesUsuario) {
         if (this.credencialesInvalidas(credencialesUsuario)) return null;
         return this.sucursal.obtenerVistaOperacionesPendientes();

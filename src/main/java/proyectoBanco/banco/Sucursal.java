@@ -21,10 +21,10 @@ public class Sucursal {
     public Cuenta obtenerEstadoCuenta(CredencialesUsuario credenciales) {
         return this.gestorCuentas.obtenerCuenta(credenciales.usuario());
     }
-    public void crearCuenta(TipoCuenta tipoCuenta, CredencialesUsuario credenciales) {
+    public void solicitarCrearCuenta(TipoCuenta tipoCuenta, CredencialesUsuario credenciales) {
         this.gestorCuentas.solicitarCrearCuenta(credenciales.usuario(), tipoCuenta);
     }
-    public void eliminarCuenta(CredencialesUsuario credenciales) {
+    public void solicitarEliminarCuenta(CredencialesUsuario credenciales) {
         this.gestorCuentas.solicitarEliminarCuenta(credenciales.usuario());
     }
     public boolean depositar(CredencialesUsuario credenciales, int cantidad) {
@@ -38,6 +38,12 @@ public class Sucursal {
     }
 
     // Métodos de gestor de cuentas
+    public boolean crearCuenta(CredencialesUsuario credenciales, TipoCuenta tipoCuenta) {
+        return this.gestorCuentas.crearCuenta(credenciales.usuario(), tipoCuenta);
+    }
+    public boolean eliminarCuenta(CredencialesUsuario credenciales) {
+        return this.gestorCuentas.eliminarCuenta(credenciales.usuario());
+    }
     public List<String> obtenerVistaOperacionesPendientes() {
         return this.gestorCuentas.obtenerVistaOperacionesPendientes();
     }
