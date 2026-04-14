@@ -7,11 +7,14 @@ public class UsuarioGestorCuentas extends Usuario {
         super(servicioBanco, credencialesUsuario);
     }
 
-    public void verOperacionesPendientes() {}
-    public boolean crearCuenta() {
-        return false;
+    public void verOperacionesPendientes() {
+        var operacionesPendientes = this.servicioBanco.obtenerOperacionesPendientes(this.credencialesUsuario);
+        System.out.println("\nOperaciones pendientes:");
+        for (var operacion: operacionesPendientes) {
+            System.out.println(operacion);
+        }
     }
-    public boolean eliminarCuenta() {
-        return false;
+    public boolean resolverOperacion(int indice) {
+        return this.servicioBanco.resolverOperacion(this.credencialesUsuario, indice);
     }
 }
