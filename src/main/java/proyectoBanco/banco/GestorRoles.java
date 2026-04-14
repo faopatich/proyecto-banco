@@ -20,6 +20,19 @@ public class GestorRoles {
             this.rolesUsuario.get(nombre).addAll(rolesUsuario);
         }
     }
+    public void eliminarRolDeUsuario(String nombre, RolUsuario rolUsuario) {
+        var roles = this.rolesUsuario.get(nombre);
+        if (roles == null || roles.isEmpty()) {
+            return;
+        }
+        roles.remove(rolUsuario);
+        if (roles.isEmpty()) {
+            this.rolesUsuario.remove(nombre);
+        }
+    }
+    public boolean usuarioTieneRoles(String usuario) {
+        return this.rolesUsuario.containsKey(usuario);
+    }
     public boolean verificarUsuarioConCredenciales(String usuario, RolUsuario rolUsuario) {
         var roles = this.rolesUsuario.get(usuario);
         if (roles == null || roles.isEmpty()) {
