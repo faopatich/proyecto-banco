@@ -3,6 +3,8 @@ package proyectoBanco.banco;
 import proyectoBanco.cuentas.*;
 import proyectoBanco.usuarios.CredencialesUsuario;
 
+import java.util.List;
+
 public class Sucursal {
     private final GestorCuentas gestorCuentas;
     private final GestorTransacciones gestorTransacciones;
@@ -33,5 +35,13 @@ public class Sucursal {
     }
     public boolean transferir(CredencialesUsuario credenciales, String receptor, int cantidad) {
         return this.gestorTransacciones.manejarTransferencia(credenciales.usuario(), receptor, cantidad);
+    }
+
+    // Métodos de gestor de cuentas
+    public List<String> obtenerVistaOperacionesPendientes() {
+        return this.gestorCuentas.obtenerVistaOperacionesPendientes();
+    }
+    public void resolverOperacion(int indice) {
+        this.gestorCuentas.resolverOperacion(indice);
     }
 }
