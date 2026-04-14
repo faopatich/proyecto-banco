@@ -3,13 +3,12 @@ package proyectoBanco.usuarios;
 import proyectoBanco.banco.ServicioBanco;
 import proyectoBanco.cuentas.CreadorCuenta;
 import proyectoBanco.cuentas.Cuenta;
-import proyectoBanco.cuentas.CuentaCorriente;
 import proyectoBanco.cuentas.TipoCuenta;
 
 import java.util.HashMap;
 
 public class GestorCuentas extends Usuario {
-    private final HashMap<CredencialesUsuario, Cuenta> cuentas;
+    private final HashMap<String, Cuenta> cuentas;
     private final CreadorCuenta creadorCuenta;
 
     public GestorCuentas(
@@ -23,11 +22,11 @@ public class GestorCuentas extends Usuario {
     }
 
     public boolean crearCuenta(CredencialesUsuario credencialesUsuario, TipoCuenta tipoCuenta) {
-        if (this.cuentas.containsKey(credencialesUsuario)) {
+        if (this.cuentas.containsKey(credencialesUsuario.usuario())) {
             return false;
         }
         this.cuentas.put(
-                credencialesUsuario,
+                credencialesUsuario.usuario(),
                 this.creadorCuenta.crearCuenta(
                         tipoCuenta,
                         credencialesUsuario.usuario()
@@ -36,14 +35,14 @@ public class GestorCuentas extends Usuario {
         return true;
     }
     public boolean eliminarCuenta(CredencialesUsuario credencialesUsuario) {
-        if (!this.cuentas.containsKey(credencialesUsuario)) {
+        if (!this.cuentas.containsKey(credencialesUsuario.usuario())) {
             return false;
         }
-        this.cuentas.remove(credencialesUsuario);
+        this.cuentas.remove(credencialesUsuario.usuario());
         return true;
     }
     public Cuenta obtenerCuenta(CredencialesUsuario credencialesUsuario) {
-        return this.cuentas.get(credencialesUsuario);
+        return this.cuentas.get(credencialesUsuario.usuario());
     }
     public void iterarCuentas() {}
 }
