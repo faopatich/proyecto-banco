@@ -32,12 +32,11 @@ public class GestorUsuarios {
         this.gestorRoles.agregarRolesDeUsuario(perfilUsuario.obtenerNombre(), rolesUsuario);
         return true;
     }
-    public boolean eliminarRolDeUsuarioSiExiste(PerfilUsuario perfilUsuario, RolUsuario rolUsuario) {
-        var perfil = this.perfilesUsuarios.get(perfilUsuario.obtenerNombre());
-        if (perfil == null) {
+    public boolean eliminarRolDeUsuarioSiExiste(CredencialesUsuario credencialesUsuario, RolUsuario rolUsuario) {
+        var nombre = credencialesUsuario.usuario();
+        if (this.perfilesUsuarios.containsKey(nombre)) {
             return false;
         }
-        var nombre = perfil.obtenerNombre();
         this.gestorRoles.eliminarRolDeUsuario(nombre, rolUsuario);
         if (!this.gestorRoles.usuarioTieneRoles(nombre)) {
             this.perfilesUsuarios.remove(nombre);
