@@ -34,6 +34,11 @@ public class GestorTransacciones extends Usuario {
         return true;
     }
     public boolean manejarTransferencia(CredencialesUsuario credencialesUsuario, String receptor, int saldo) {
-        return false;
+        var cuentaEmisor = this.cuentas.get(credencialesUsuario.usuario());
+        var cuentaReceptor = this.cuentas.get(receptor);
+        if (cuentaEmisor == null || cuentaReceptor == null) {
+            return false;
+        }
+        return cuentaEmisor.transferir(cuentaReceptor, saldo);
     }
 }
