@@ -23,9 +23,10 @@ public class GestorUsuarios {
         }
         return perfilUsuario.obtenerContr().equals(credencialesUsuario.contr());
     }
-    public boolean agregarUsuario(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
-        if (this.perfilesUsuarios.containsKey(perfilUsuario.obtenerNombre())) {
-            return false;
+    public boolean agregarUsuarioSiNoExiste(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
+        var perfil = this.perfilesUsuarios.get(perfilUsuario.obtenerNombre());
+        if (perfil != null) {
+            return perfil.equals(perfilUsuario);
         }
         this.perfilesUsuarios.put(perfilUsuario.obtenerNombre(), perfilUsuario);
         this.gestorRoles.agregarRolesDeUsuario(perfilUsuario.obtenerNombre(), rolesUsuario);
