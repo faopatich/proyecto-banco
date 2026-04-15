@@ -29,7 +29,7 @@ class Main {
         var perfilFalso2  = new PerfilUsuario("Hernan", "000noseguro", "ayer");
         var perfilGestor = new PerfilUsuario("Ulises", "gestor444", "mañana");
 
-        var usuarioGestorCuentas = new UsuarioGestorCuentas(servicioBanco, perfilGestor.generarCredenciales());
+        var usuarioGestorCuentas = new UsuarioGestorCuentas(servicioBanco, perfilGestor);
 
         servicioBanco.solicitarCrearCuenta(perfil1, TipoCuenta.CuentaAhorro);
         servicioBanco.solicitarCrearCuenta(perfil2, TipoCuenta.CuentaCorriente);
@@ -42,20 +42,20 @@ class Main {
         usuarioGestorCuentas.crearCuenta(perfil1, TipoCuenta.CuentaAhorro);
         usuarioGestorCuentas.crearCuenta(perfil2, TipoCuenta.CuentaCorriente);
 
-        var clienteFalso1 = new Cliente(servicioBanco, perfilFalso1.generarCredenciales());
+        var clienteFalso1 = new Cliente(servicioBanco, perfilFalso1);
         clienteFalso1.actualizarVistaCuenta();
         clienteFalso1.verEstadoCuenta();
 
-        var clienteFalso2 = new Cliente(servicioBanco, perfilFalso2.generarCredenciales());
+        var clienteFalso2 = new Cliente(servicioBanco, perfilFalso2);
         clienteFalso2.actualizarVistaCuenta();
         clienteFalso2.verEstadoCuenta();
 
         System.out.println("\n\nAntes de la transferencia:\n");
-        var cliente1 = new Cliente(servicioBanco, perfil1.generarCredenciales());
+        var cliente1 = new Cliente(servicioBanco, perfil1);
         cliente1.actualizarVistaCuenta();
         cliente1.verEstadoCuenta();
 
-        var cliente2 = new Cliente(servicioBanco, perfil2.generarCredenciales());
+        var cliente2 = new Cliente(servicioBanco, perfil2);
         cliente2.actualizarVistaCuenta();
         cliente2.verEstadoCuenta();
 

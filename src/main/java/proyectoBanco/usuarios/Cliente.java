@@ -6,22 +6,24 @@ import proyectoBanco.cuentas.Cuenta;
 public class Cliente extends Usuario {
     private Cuenta vistaCuenta;
 
-    public Cliente(ServicioBanco servicioBanco, CredencialesUsuario credencialesUsuario) {
-        super(servicioBanco, credencialesUsuario);
+    public Cliente(ServicioBanco servicioBanco, PerfilUsuario perfilUsuario) {
+        super(servicioBanco, perfilUsuario);
         this.vistaCuenta = null;
     }
 
     public void actualizarVistaCuenta() {
-        this.vistaCuenta = this.servicioBanco.obtenerEstadoCuenta(super.credencialesUsuario);
+        this.vistaCuenta = this.servicioBanco.obtenerEstadoCuenta(
+                super.perfilUsuario.generarCredenciales()
+        );
     }
     public boolean depositar(int cantidad) {
-        return this.servicioBanco.depositar(cantidad, super.credencialesUsuario);
+        return this.servicioBanco.depositar(cantidad, super.perfilUsuario.generarCredenciales());
     }
     public boolean retirar(int cantidad) {
-        return this.servicioBanco.retirar(cantidad, super.credencialesUsuario);
+        return this.servicioBanco.retirar(cantidad, super.perfilUsuario.generarCredenciales());
     }
     public boolean transferir(String receptor, int cantidad) {
-        return this.servicioBanco.transferir(super.credencialesUsuario, receptor, cantidad);
+        return this.servicioBanco.transferir(super.perfilUsuario.generarCredenciales(), receptor, cantidad);
     }
     public void verEstadoCuenta() {
         if (this.vistaCuenta == null) {
