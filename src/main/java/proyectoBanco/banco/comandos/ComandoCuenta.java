@@ -1,5 +1,5 @@
 package proyectoBanco.banco.comandos;
 
-public interface Comando {
+public interface ComandoCuenta {
     void ejecutar();
 }

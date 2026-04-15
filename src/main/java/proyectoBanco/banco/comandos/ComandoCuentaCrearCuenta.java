@@ -3,12 +3,12 @@ package proyectoBanco.banco.comandos;
 import proyectoBanco.banco.GestorCuentas;
 import proyectoBanco.cuentas.TipoCuenta;
 
-public class ComandoCrearCuenta implements Comando {
+public class ComandoCuentaCrearCuenta implements ComandoCuenta {
     private final GestorCuentas gestorCuentas;
     private final String propietario;
     private final TipoCuenta tipoCuenta;
 
-    public ComandoCrearCuenta(
+    public ComandoCuentaCrearCuenta(
             GestorCuentas gestorCuentas,
             String propietario,
             TipoCuenta tipoCuenta

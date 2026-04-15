@@ -1,8 +1,8 @@
 package proyectoBanco.banco;
 
-import proyectoBanco.banco.comandos.Comando;
-import proyectoBanco.banco.comandos.ComandoCrearCuenta;
-import proyectoBanco.banco.comandos.ComandoEliminarCuenta;
+import proyectoBanco.banco.comandos.ComandoCuenta;
+import proyectoBanco.banco.comandos.ComandoCuentaCrearCuenta;
+import proyectoBanco.banco.comandos.ComandoCuentaEliminarCuenta;
 import proyectoBanco.cuentas.CreadorCuenta;
 import proyectoBanco.cuentas.Cuenta;
 import proyectoBanco.cuentas.TipoCuenta;
@@ -12,7 +12,7 @@ import java.util.*;
 public class GestorCuentas  {
     private final HashMap<String, Cuenta> cuentas;
     private final CreadorCuenta creadorCuenta;
-    private final List<Comando> tareasPendientes;
+    private final List<ComandoCuenta> tareasPendientes;
 
     public GestorCuentas(
             HashMap<String, Cuenta> cuentas,
@@ -24,10 +24,10 @@ public class GestorCuentas  {
     }
 
     public void solicitarCrearCuenta(String usuario, TipoCuenta tipoCuenta) {
-        this.tareasPendientes.add(new ComandoCrearCuenta(this, usuario, tipoCuenta));
+        this.tareasPendientes.add(new ComandoCuentaCrearCuenta(this, usuario, tipoCuenta));
     }
     public void solicitarEliminarCuenta(String usuario) {
-        this.tareasPendientes.add(new ComandoEliminarCuenta(this,usuario));
+        this.tareasPendientes.add(new ComandoCuentaEliminarCuenta(this,usuario));
     }
 
     // Operaciones de cuenta
@@ -59,7 +59,7 @@ public class GestorCuentas  {
     public List<String> obtenerVistaOperacionesPendientes() {
         return this.tareasPendientes
                 .stream()
-                .map(Comando::toString)
+                .map(ComandoCuenta::toString)
                 .toList();
     }
     public void resolverOperacion(int indice) {

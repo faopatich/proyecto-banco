@@ -2,11 +2,11 @@ package proyectoBanco.banco.comandos;
 
 import proyectoBanco.banco.GestorCuentas;
 
-public class ComandoEliminarCuenta implements Comando {
+public class ComandoCuentaEliminarCuenta implements ComandoCuenta {
     private final GestorCuentas gestorCuentas;
     private final String propietario;
 
-    public ComandoEliminarCuenta(
+    public ComandoCuentaEliminarCuenta(
             GestorCuentas gestorCuentas,
             String propietario
     ) {
