@@ -29,8 +29,12 @@ public class Cliente extends Usuario {
         return this.servicioCliente.transferir(super.perfilUsuario.generarCredenciales(), receptor, cantidad);
     }
     public void verEstadoCuenta() {
-        this.servicioCliente.obtenerEstadoCuenta(
+        var cuenta = this.servicioCliente.obtenerEstadoCuenta(
                 super.perfilUsuario.generarCredenciales()
-        ).verBalance();
+        );
+        if (cuenta == null) {
+            return;
+        }
+        cuenta.verBalance();
     }
 }
