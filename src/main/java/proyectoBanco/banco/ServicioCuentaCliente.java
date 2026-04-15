@@ -4,10 +4,10 @@ import proyectoBanco.cuentas.Cuenta;
 import proyectoBanco.cuentas.TipoCuenta;
 import proyectoBanco.usuarios.CredencialesUsuario;
 
-public class ServicioCuenta {
+public class ServicioCuentaCliente {
     private final GestorCuentas gestorCuentas;
 
-    public ServicioCuenta(GestorCuentas gestorCuentas) {
+    public ServicioCuentaCliente(GestorCuentas gestorCuentas) {
         this.gestorCuentas = gestorCuentas;
     }
 
