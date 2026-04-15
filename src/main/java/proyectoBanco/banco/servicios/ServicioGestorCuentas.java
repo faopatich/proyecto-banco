@@ -21,12 +21,22 @@ public class ServicioGestorCuentas extends ServicioProtegido {
         return this.servicioGestionCuentas.crearCuenta(credenciales, tipoCuenta);
     }
     public boolean eliminarCuenta(CredencialesUsuario credenciales) {
+        if (super.credencialesInvalidas(credenciales)) {
+            return false;
+        }
         return this.servicioGestionCuentas.eliminarCuenta(credenciales);
     }
-    public List<String> obtenerVistaOperacionesPendientes() {
+    public List<String> obtenerVistaOperacionesPendientes(CredencialesUsuario credenciales) {
+        if (super.credencialesInvalidas(credenciales)) {
+            return null;
+        }
         return this.servicioGestionCuentas.obtenerVistaOperacionesPendientes();
     }
-    public void resolverOperacion(int indice) {
+    public boolean resolverOperacion(CredencialesUsuario credenciales, int indice) {
+        if (super.credencialesInvalidas(credenciales)) {
+            return false;
+        }
         this.servicioGestionCuentas.resolverOperacion(indice);
+        return true;
     }
 }
