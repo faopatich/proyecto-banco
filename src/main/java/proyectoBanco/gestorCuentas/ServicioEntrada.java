@@ -10,7 +10,6 @@ public class ServicioEntrada {
     }
 
     public String leer() {
-        System.out.print("> ");
         return this.scanner.nextLine();
     }
 }

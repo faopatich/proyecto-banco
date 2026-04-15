@@ -32,6 +32,7 @@ public class AplicacionGestorCuentas {
     public final ServicioUsuario servicioUsuario;
 
     public ServicioComandoGestorCuentas servicioComandoGestorCuentas;
+    public Menu menu;
 
     public AplicacionGestorCuentas() {
         this.scanner = new Scanner(System.in);
@@ -50,19 +51,7 @@ public class AplicacionGestorCuentas {
         this.servicioUsuario = new ServicioUsuario(gestorUsuarios);
 
         this.servicioComandoGestorCuentas = null;
-    }
-
-    public boolean manejarComando() {
-        var comando = this.servicioComandoGestorCuentas.siguienteComando();
-        if (comando == null) {
-            return false;
-        }
-        comando.ejecutar();
-        return true;
-    }
-
-    public void manejarComandos() {
-        while (this.manejarComando());
+        this.menu = null;
     }
 
     public static void main(String[] args) {
@@ -80,6 +69,7 @@ public class AplicacionGestorCuentas {
                 aplicacion.servicioEntrada,
                 fabrica
         );
+        aplicacion.menu = new Menu(aplicacion.servicioComandoGestorCuentas);
 
         aplicacion.servicioUsuario.crearUsuarioSiNoExiste(perfilGestorCuentas, roles);
         var usuarioGestorCuentas = new UsuarioGestorCuentas(
@@ -97,7 +87,7 @@ public class AplicacionGestorCuentas {
         cliente1.solicitarCrearCuenta(TipoCuenta.CuentaAhorro);
         cliente1.solicitarCrearCuenta(TipoCuenta.CuentaCorriente);
 
-        aplicacion.manejarComandos();
+        aplicacion.menu.ejecutar();
 
         cliente1.verEstadoCuenta();
 
