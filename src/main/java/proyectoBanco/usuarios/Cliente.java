@@ -2,6 +2,7 @@ package proyectoBanco.usuarios;
 
 import proyectoBanco.banco.ServicioBanco;
 import proyectoBanco.cuentas.Cuenta;
+import proyectoBanco.cuentas.TipoCuenta;
 
 public class Cliente extends Usuario {
     private Cuenta vistaCuenta;
@@ -11,6 +12,12 @@ public class Cliente extends Usuario {
         this.vistaCuenta = null;
     }
 
+    public boolean solicitarCrearCuenta(TipoCuenta tipoCuenta) {
+        return this.servicioBanco.solicitarCrearCuenta(super.perfilUsuario, tipoCuenta);
+    }
+    public boolean solicitarEliminarCuenta() {
+        return this.servicioBanco.solicitarEliminarCuenta(super.perfilUsuario.generarCredenciales());
+    }
     public void actualizarVistaCuenta() {
         this.vistaCuenta = this.servicioBanco.obtenerEstadoCuenta(
                 super.perfilUsuario.generarCredenciales()
