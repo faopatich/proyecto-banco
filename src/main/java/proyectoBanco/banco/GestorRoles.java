@@ -2,7 +2,6 @@ package proyectoBanco.banco;
 
 import proyectoBanco.usuarios.RolUsuario;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,13 +25,6 @@ public class GestorRoles {
     }
     private boolean verificarUsuarioTieneRolesEnBdd(Map<String, Set<RolUsuario>> roles, String nombre) {
         return roles.containsKey(nombre);
-    }
-    public boolean verificarRolEnUsuarioEnBdd(Map<String, Set<RolUsuario>> roles, String usuario, RolUsuario rolUsuario) {
-        var rolesActuales = roles.get(usuario);
-        if (rolesActuales == null || rolesActuales.isEmpty()) {
-            return false;
-        }
-        return rolesActuales.contains(rolUsuario);
     }
 
     public GestorRoles() {}
@@ -60,11 +52,6 @@ public class GestorRoles {
     public boolean usuarioTieneRoles(String usuario) {
         return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
                 bdd -> this.verificarUsuarioTieneRolesEnBdd(bdd.roles, usuario)
-        );
-    }
-    public boolean verificarRolesEnUsuario(String usuario, RolUsuario rolUsuario) {
-        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
-                bdd -> this.verificarRolEnUsuarioEnBdd(bdd.roles, usuario, rolUsuario)
         );
     }
 }

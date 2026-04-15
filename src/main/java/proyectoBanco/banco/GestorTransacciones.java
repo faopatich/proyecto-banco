@@ -2,7 +2,6 @@ package proyectoBanco.banco;
 
 import proyectoBanco.cuentas.Cuenta;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class GestorTransacciones {
