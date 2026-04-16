@@ -30,7 +30,7 @@ public class MenuSistema {
             } else if (opcionPrincipal == 2) {
                 loginAdminSucursal();
             } else if (opcionPrincipal == 3) {
-                loginCliente(new ManejadorTransacciones());
+                loginCliente(new ManejadorTransacciones(null, null));
             } else if (opcionPrincipal == 4) {
                 System.out.println("Saliendo...");
             } else {

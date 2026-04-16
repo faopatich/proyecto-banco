@@ -4,9 +4,9 @@ public class ManejadorTransacciones {
     private final Banco bancoF;
     private final Banco bancoM;
 
-    public ManejadorTransacciones() {
-        this.bancoF = null;
-        this.bancoM = null;
+    public ManejadorTransacciones(Banco bancoF, Banco bancoM) {
+        this.bancoF = bancoF;
+        this.bancoM = bancoM;
     }
 
     public Cuenta transferir(Cuenta emisor, String banco, String numeroCuentaReceptor, int saldo) {
