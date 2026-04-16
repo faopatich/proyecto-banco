@@ -1,5 +1,7 @@
 package aplicacion.BancoF;
 
+import aplicacion.interfazComun.ManejadorTransacciones;
+
 import java.util.Scanner;
 
 public class MenuSistema {
@@ -28,7 +30,7 @@ public class MenuSistema {
             } else if (opcionPrincipal == 2) {
                 loginAdminSucursal();
             } else if (opcionPrincipal == 3) {
-                loginCliente();
+                loginCliente(new ManejadorTransacciones());
             } else if (opcionPrincipal == 4) {
                 System.out.println("Saliendo...");
             } else {
@@ -69,7 +71,7 @@ public class MenuSistema {
         }
     }
 
-    public void loginCliente() {
+    public void loginCliente(ManejadorTransacciones manejadorTransacciones) {
         System.out.print("Username cliente: ");
         String username = scanner.nextLine();
 
@@ -81,7 +83,7 @@ public class MenuSistema {
         if (cliente == null) {
             System.out.println("Cliente no encontrado.");
         } else if (cliente.getPassword().equals(password)) {
-            menuCliente(cliente);
+            menuCliente(cliente, manejadorTransacciones);
         } else {
             System.out.println("Password incorrecta.");
         }
@@ -154,7 +156,7 @@ public class MenuSistema {
         }
     }
 
-    public void menuCliente(Cliente cliente) {
+    public void menuCliente(Cliente cliente, ManejadorTransacciones manejadorTransacciones) {
         int opcion = 0;
 
         while (opcion != 7) {
@@ -184,21 +186,18 @@ public class MenuSistema {
                 double monto = leerDouble();
                 banco.getGestorOperaciones().extraer(cliente, monto);
             } else if (opcion == 4) {
+                System.out.println("Ingrese nombre del banco: ");
+                String nombreBanco = scanner.nextLine();
+                if (!nombreBanco.equals("BancoF") && !nombreBanco.equals("BancoM")){
+                    System.out.println("Banco no encontrado.");
+                continue;}
+
                 System.out.print("Numero de cuenta destino: ");
                 String numeroCuentaDestino = scanner.nextLine();
 
-                Cuenta cuentaDestino = banco.buscarCuentaPorNumero(numeroCuentaDestino);
-
                 System.out.print("Monto: ");
                 double monto = leerDouble();
-
-                if (cuentaDestino == null) {
-                    System.out.println("Cuenta destino no encontrada.");
-                } else {
-                    Cliente clienteDestino = banco.buscarClientePorCuenta(cuentaDestino);
-
-                    banco.getGestorOperaciones().transferir(cliente, clienteDestino, monto);
-                }
+                manejadorTransacciones.transferir(cliente.getCuenta(), nombreBanco, numeroCuentaDestino, (int) monto);
             } else if (opcion == 5) {
                 cliente.mostrarCliente();
             } else if (opcion == 6) {

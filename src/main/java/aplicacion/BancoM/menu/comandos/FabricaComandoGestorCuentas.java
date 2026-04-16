@@ -1,14 +1,13 @@
-package aplicacion.BancoM.menu;
+package aplicacion.BancoM.menu.comandos;
 
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
-import aplicacion.BancoM.menu.comandos.*;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
-public class FabricaComandoGestorCuentas {
+public class FabricaComandoGestorCuentas implements FabricaComandoMenu {
     private final ServicioGestorCuentas servicioGestorCuentas;
     private final PerfilUsuario perfilUsuarioGestorCuentas;
 
-    private ComandoGestorCuenta crearComandoManejar(String entrada) {
+    private ComandoMenu crearComandoManejar(String entrada) {
         var lineaDividida = entrada.split(" ");
 
         if (!lineaDividida[0].equals("manejar")) {
@@ -36,7 +35,8 @@ public class FabricaComandoGestorCuentas {
         this.perfilUsuarioGestorCuentas = perfilUsuarioGestorCuentas;
     }
 
-    public ComandoGestorCuenta crear(String entrada) {
+    @Override
+    public ComandoMenu crear(String entrada) {
         switch (entrada.charAt(0)) {
             case 'm' -> {
                 return this.crearComandoManejar(entrada);
@@ -48,10 +48,10 @@ public class FabricaComandoGestorCuentas {
                 return null;
             }
             case 'a' -> {
-                return new ComandoAyuda(this.servicioGestorCuentas, this.perfilUsuarioGestorCuentas);
+                return new ComandoAyuda();
             }
             case 's' -> {
-                return new ComandoSalir(this.servicioGestorCuentas, this.perfilUsuarioGestorCuentas);
+                return new ComandoSalir();
             }
             default -> {
                 return null;

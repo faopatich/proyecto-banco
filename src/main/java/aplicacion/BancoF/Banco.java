@@ -55,10 +55,15 @@ public class Banco implements aplicacion.interfazComun.Banco {
 
         Cliente cliente = buscarClientePorUsername(username);
         if (cliente != null && cliente.getPassword().equals(password)) {
-            return (servicioEntrada, manejadorTransacciones) -> menuSistema.menuCliente(cliente);
+            return (servicioEntrada, manejadorTransacciones) -> menuSistema.menuCliente(cliente, manejadorTransacciones);
         }
 
         return null;
+    }
+
+    @Override
+    public aplicacion.interfazComun.Cuenta obtenerCuenta(String numeroCuenta) {
+        return buscarCuentaPorNumero(numeroCuenta);
     }
 
     public Sucursal buscarSucursalPorCodigo(String codigo) {

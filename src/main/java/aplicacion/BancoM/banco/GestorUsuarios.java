@@ -40,4 +40,18 @@ public class GestorUsuarios {
         }
         return true;
     }
+    public PerfilUsuario obtenerPrefilDeUsuario(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario) {
+        var perfil = bdd.perfiles.get(credencialesUsuario.usuario());
+        if (perfil == null) {
+            return null;
+        }
+        return perfil.clone();
+    }
+    public Set<RolUsuario> obtenerRolesDeUsuario(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario) {
+        var roles = bdd.roles.get(credencialesUsuario.usuario());
+        if (roles == null) {
+            return null;
+        }
+        return Set.copyOf(roles);
+    }
 }

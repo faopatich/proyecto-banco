@@ -1,0 +1,18 @@
+package aplicacion.BancoM.menu.comandos;
+
+import aplicacion.interfazComun.ServicioEntrada;
+
+public class ServicioComandoMenu {
+    private final ServicioEntrada servicioEntrada;
+    private final FabricaComandoMenu fabricaComandoMenu;
+
+    public ServicioComandoMenu(ServicioEntrada servicioEntradas, FabricaComandoMenu fabricaComandoMenu) {
+        this.servicioEntrada = servicioEntradas;
+        this.fabricaComandoMenu = fabricaComandoMenu;
+    }
+
+    public ComandoMenu obtenerComando() {
+        String entrada = this.servicioEntrada.leer();
+        return this.fabricaComandoMenu.crear(entrada);
+    }
+}

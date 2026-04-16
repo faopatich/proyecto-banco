@@ -1,6 +1,8 @@
 package aplicacion.BancoF;
 
-public class Cuenta {
+
+public class Cuenta implements aplicacion.interfazComun.Cuenta, Cloneable {
+
     private static int contadorCuentas = 1;
     private String numeroCuenta;
     private String tipoCuenta;
@@ -37,5 +39,17 @@ public class Cuenta {
         System.out.println("Numero de cuenta: " + numeroCuenta);
         System.out.println("Tipo de cuenta: " + tipoCuenta);
         System.out.println("Saldo: $" + saldo);
+    }
+
+    @Override
+    public boolean depositar(int saldo) {
+       sumarSaldo(saldo);
+        return true;
+    }
+
+    @Override
+    public boolean retirar(int saldo) {
+        restarSaldo(saldo);
+        return true;
     }
 }

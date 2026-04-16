@@ -3,15 +3,19 @@ package aplicacion.BancoM.menu.comandos;
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
-public class ComandoListar extends ComandoGestorCuenta {
-    public ComandoListar(ServicioGestorCuentas servicioGestorCuentas, PerfilUsuario perfilUsuarioGestorCuentas) {
-        super(servicioGestorCuentas, perfilUsuarioGestorCuentas);
+public class ComandoListar implements ComandoMenu {
+    private final ServicioGestorCuentas servicioGestorCuentas;
+    private final PerfilUsuario perfilUsuario;
+
+    public ComandoListar(ServicioGestorCuentas servicioGestorCuentas, PerfilUsuario perfilUsuario) {
+        this.servicioGestorCuentas = servicioGestorCuentas;
+        this.perfilUsuario = perfilUsuario;
     }
 
     @Override
     public void ejecutar() {
-        var operacionesPendientes = super.servicioGestorCuentas.obtenerVistaOperacionesPendientes(
-                this.perfilUsuarioGestorCuentas.generarCredenciales()
+        var operacionesPendientes = this.servicioGestorCuentas.obtenerVistaOperacionesPendientes(
+                this.perfilUsuario.generarCredenciales()
         );
         if (operacionesPendientes.isEmpty()) {
             System.out.println("Sin operaciones pendientes\n");
