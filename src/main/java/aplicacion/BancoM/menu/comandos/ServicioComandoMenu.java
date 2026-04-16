@@ -2,7 +2,7 @@ package aplicacion.BancoM.menu.comandos;
 
 import aplicacion.interfazComun.ServicioEntrada;
 
-public abstract class ServicioComandoMenu {
+public class ServicioComandoMenu {
     private final ServicioEntrada servicioEntrada;
     private final FabricaComandoMenu fabricaComandoMenu;
 
