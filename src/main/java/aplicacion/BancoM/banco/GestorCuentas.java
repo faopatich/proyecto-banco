@@ -22,7 +22,8 @@ public class GestorCuentas {
                 usuario,
                 this.creadorCuenta.crearCuenta(
                         tipoCuenta,
-                        usuario
+                        usuario,
+                        cuentas.size()
                 )
         );
         return true;
@@ -36,5 +37,22 @@ public class GestorCuentas {
     }
     public Cuenta obtenerCuenta(Map<String, Cuenta> cuentas, String usuario) {
         return cuentas.get(usuario);
+    }
+    public Cuenta obtenerCuenta(Map<String, Cuenta> cuentas, int numeroCuenta) {
+        Cuenta cuenta = null;
+        var cuentasOriginales = cuentas.values().stream().toList();
+        int i = 0;
+        while (i < cuentas.size()) {
+            var c = cuentasOriginales.get(i);
+            if (c.obtenerNumeroCuenta() == numeroCuenta) {
+                cuenta = c;
+                break;
+            }
+            i++;
+        }
+        if (cuenta == null) {
+            return null;
+        }
+        return cuenta.clone();
     }
 }

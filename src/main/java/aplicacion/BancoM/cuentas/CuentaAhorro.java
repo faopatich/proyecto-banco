@@ -1,8 +1,9 @@
 package aplicacion.BancoM.cuentas;
 
 public class CuentaAhorro extends Cuenta {
-    public CuentaAhorro(String propietario) {
+    public CuentaAhorro(String propietario, int numeroCuenta) {
         super.propietario = propietario;
+        super.numeroCuenta = numeroCuenta;
         super.saldo = 0;
     }
 

@@ -1,6 +1,7 @@
 package aplicacion.BancoM.banco.servicios;
 
 import aplicacion.BancoM.banco.concurrencia.GestorCuentasConcurrente;
+import aplicacion.BancoM.cuentas.Cuenta;
 import aplicacion.BancoM.cuentas.TipoCuenta;
 import aplicacion.BancoM.usuarios.CredencialesUsuario;
 
@@ -19,6 +20,9 @@ public class ServicioGestionCuentas {
     }
     public boolean eliminarCuenta(CredencialesUsuario credenciales) {
         return this.gestorCuentasConcurrente.eliminarCuenta(credenciales.usuario());
+    }
+    public Cuenta obtenerCuenta(int numeroCuenta) {
+        return this.gestorCuentasConcurrente.obtenerCuenta(numeroCuenta);
     }
     public List<String> obtenerVistaOperacionesPendientes() {
         return this.gestorCuentasConcurrente.obtenerVistaOperacionesPendientes();

@@ -3,8 +3,9 @@ package aplicacion.BancoM.cuentas;
 public class CuentaCorriente extends Cuenta {
     private final double interesPorGiro;
 
-    public CuentaCorriente(String propietario) {
+    public CuentaCorriente(String propietario, int numeroCuenta) {
         super.propietario = propietario;
+        super.numeroCuenta = numeroCuenta;
         super.saldo = 0;
         this.interesPorGiro = 1.5;
     }
