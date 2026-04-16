@@ -1,16 +1,24 @@
 package aplicacion.BancoF;
 
-import java.util.ArrayList;
+import aplicacion.interfazComun.Credenciales;
+import aplicacion.interfazComun.ManejadorTransacciones;
+import aplicacion.interfazComun.Menu;
+import aplicacion.interfazComun.ServicioEntrada;
 
-public class Banco {
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Banco implements aplicacion.interfazComun.Banco {
     private String nombre;
     private ArrayList<Sucursal> sucursales;
     private GestorOperaciones gestorOperaciones;
+    private Scanner scanner;
 
     public Banco(String nombre) {
         this.nombre = nombre;
         this.sucursales = new ArrayList<Sucursal>();
         this.gestorOperaciones = new GestorOperaciones();
+        this.scanner = new Scanner(System.in);
     }
 
     public String getNombre() {
@@ -27,6 +35,30 @@ public class Banco {
 
     public ArrayList<Sucursal> getSucursales() {
         return sucursales;
+    }
+
+    @Override
+    public Menu login(Credenciales credenciales) {
+        String username = credenciales.usuario();
+        String password = credenciales.contr();
+
+        MenuSistema menuSistema = new MenuSistema(scanner, this);
+
+        if (username.equals("admin") && password.equals("1234")) {
+            return (servicioEntrada, manejadorTransacciones) -> menuSistema.menuAdminGeneral();
+        }
+
+        Sucursal sucursal = buscarSucursalPorAdminUsername(username);
+        if (sucursal != null && sucursal.getAdmin().getPassword().equals(password)) {
+            return (servicioEntrada, manejadorTransacciones) -> menuSistema.menuAdminSucursal(sucursal);
+        }
+
+        Cliente cliente = buscarClientePorUsername(username);
+        if (cliente != null && cliente.getPassword().equals(password)) {
+            return (servicioEntrada, manejadorTransacciones) -> menuSistema.menuCliente(cliente);
+        }
+
+        return null;
     }
 
     public Sucursal buscarSucursalPorCodigo(String codigo) {
@@ -66,6 +98,7 @@ public class Banco {
 
         return clienteEncontrado;
     }
+
     public Cliente buscarClientePorCuenta(Cuenta cuenta) {
         Cliente clienteEncontrado = null;
         int i = 0;
@@ -130,6 +163,7 @@ public class Banco {
             i = i + 1;
         }
     }
+
     public Cuenta buscarCuentaPorNumero(String numeroCuenta) {
         Cuenta cuentaEncontrada = null;
         int i = 0;
