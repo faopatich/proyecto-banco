@@ -3,7 +3,7 @@ package aplicacion.BancoM.menu.comandos;
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
-public abstract class ComandoGestorCuenta {
+public abstract class ComandoGestorCuenta implements ComandoMenu {
     protected ServicioGestorCuentas servicioGestorCuentas;
     protected PerfilUsuario perfilUsuarioGestorCuentas;
 
