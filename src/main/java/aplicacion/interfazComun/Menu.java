@@ -1,5 +1,5 @@
 package aplicacion.interfazComun;
 
 public interface Menu {
-    void ejecutar();
+    void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones);
 }
