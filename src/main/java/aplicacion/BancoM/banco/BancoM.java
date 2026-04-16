@@ -1,5 +1,6 @@
 package aplicacion.BancoM.banco;
 
+import aplicacion.BancoM.menu.BancoMMenuCliente;
 import aplicacion.BancoM.menu.BancoMMenuGestorCuentas;
 import aplicacion.BancoM.menu.comandos.FabricaComandoCliente;
 import aplicacion.BancoM.menu.comandos.FabricaComandoGestorCuentas;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class BancoM implements Banco {
-    private final Sucursal sucursal;
+    public final Sucursal sucursal;
 
     private CredencialesUsuario crearCredenciales(Credenciales credenciales) {
         return new CredencialesUsuario(
@@ -42,7 +43,7 @@ public class BancoM implements Banco {
         } else if (rolesUsuario.contains(RolUsuario.Cliente)) {
             fabricaComandoMenu = new FabricaComandoCliente();
             servicioComandoMenu = new ServicioComandoMenu(servicioEntrada, fabricaComandoMenu);
-            menu = new BancoMMenuGestorCuentas(servicioComandoMenu);
+            menu = new BancoMMenuCliente(servicioComandoMenu);
         }
         return menu;
     }
