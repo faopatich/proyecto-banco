@@ -1,6 +1,7 @@
 package aplicacion.BancoM.banco.servicios;
 
 import aplicacion.BancoM.banco.concurrencia.GestorUsuariosConcurrente;
+import aplicacion.BancoM.usuarios.CredencialesUsuario;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.BancoM.usuarios.RolUsuario;
 
@@ -21,5 +22,8 @@ public class ServicioUsuario {
                 perfilUsuario.generarCredenciales(),
                 rolUsuario
         );
+    }
+    public Set<RolUsuario> obtenerRolesDeUsuario(CredencialesUsuario credencialesUsuario) {
+        return this.gestorUsuariosConcurrente.obtenerRolesDeUsuario(credencialesUsuario);
     }
 }

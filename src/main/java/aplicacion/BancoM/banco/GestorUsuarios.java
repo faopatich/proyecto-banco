@@ -40,4 +40,7 @@ public class GestorUsuarios {
         }
         return true;
     }
+    public Set<RolUsuario> obtenerRolesDeUsuario(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario) {
+        return Set.copyOf(bdd.roles.get(credencialesUsuario.usuario()));
+    }
 }

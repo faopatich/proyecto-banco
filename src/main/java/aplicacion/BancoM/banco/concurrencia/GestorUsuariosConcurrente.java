@@ -30,4 +30,9 @@ public class GestorUsuariosConcurrente {
                 bdd -> this.gestorUsuarios.eliminarRolDeUsuarioSiExiste(bdd, credencialesUsuario, rolUsuario)
         );
     }
+    public Set<RolUsuario> obtenerRolesDeUsuario(CredencialesUsuario credencialesUsuario) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorUsuarios.obtenerRolesDeUsuario(bdd, credencialesUsuario)
+        );
+    }
 }
