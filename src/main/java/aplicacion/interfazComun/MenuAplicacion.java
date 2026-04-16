@@ -17,6 +17,9 @@ public class MenuAplicacion implements Menu {
 
     public void ejecutar() {
         while (true) {
+            System.out.println("Menu de aplicación");
+            System.out.println(" - Ingrese en el formato: <banco> <usuario> <contraseña>\n");
+            System.out.print("> ");
             var comandoLogin = this.servicioEntrada.leer();
             var argumentos = this.separadorArgumentos.crear(comandoLogin);
             if (argumentos == null) {
