@@ -48,6 +48,10 @@ public class GestorUsuarios {
         return perfil.clone();
     }
     public Set<RolUsuario> obtenerRolesDeUsuario(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario) {
-        return Set.copyOf(bdd.roles.get(credencialesUsuario.usuario()));
+        var roles = bdd.roles.get(credencialesUsuario.usuario());
+        if (roles == null) {
+            return null;
+        }
+        return Set.copyOf(roles);
     }
 }
