@@ -4,7 +4,7 @@ import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
 import aplicacion.BancoM.menu.comandos.*;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
-public class FabricaComandoGestorCuentas {
+public class FabricaComandoGestorCuentas implements FabricaComandoMenu {
     private final ServicioGestorCuentas servicioGestorCuentas;
     private final PerfilUsuario perfilUsuarioGestorCuentas;
 
@@ -36,6 +36,7 @@ public class FabricaComandoGestorCuentas {
         this.perfilUsuarioGestorCuentas = perfilUsuarioGestorCuentas;
     }
 
+    @Override
     public ComandoMenu crear(String entrada) {
         switch (entrada.charAt(0)) {
             case 'm' -> {
