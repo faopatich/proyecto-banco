@@ -9,10 +9,7 @@ import aplicacion.BancoM.menu.comandos.ServicioComandoMenu;
 import aplicacion.BancoM.usuarios.CredencialesUsuario;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.BancoM.usuarios.RolUsuario;
-import aplicacion.interfazComun.Banco;
-import aplicacion.interfazComun.Credenciales;
-import aplicacion.interfazComun.Menu;
-import aplicacion.interfazComun.ServicioEntrada;
+import aplicacion.interfazComun.*;
 
 import java.util.Scanner;
 import java.util.Set;
@@ -62,5 +59,10 @@ public class BancoM implements Banco {
             return null;
         }
         return this.obtenerMenu(perfilUsuario, rolesUsuario);
+    }
+
+    @Override
+    public Cuenta obtenerCuenta(int numeroCuenta) {
+        return this.sucursal.servicioGestorCuentas.obtenerCuenta(numeroCuenta);
     }
 }

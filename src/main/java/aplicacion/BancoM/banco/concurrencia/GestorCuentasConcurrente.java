@@ -51,6 +51,11 @@ public class GestorCuentasConcurrente {
                 bdd -> this.gestorCuentas.obtenerCuenta(bdd.cuentas, usuario)
         );
     }
+    public Cuenta obtenerCuenta(int numeroCuenta) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorCuentas.obtenerCuenta(bdd.cuentas, numeroCuenta)
+        );
+    }
 
     // Operaciones de administrador
     public List<String> obtenerVistaOperacionesPendientes() {

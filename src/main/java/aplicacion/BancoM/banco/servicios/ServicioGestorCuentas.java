@@ -1,6 +1,7 @@
 package aplicacion.BancoM.banco.servicios;
 
 import aplicacion.BancoM.banco.concurrencia.GestorUsuariosConcurrente;
+import aplicacion.BancoM.cuentas.Cuenta;
 import aplicacion.BancoM.cuentas.TipoCuenta;
 import aplicacion.BancoM.usuarios.CredencialesUsuario;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
@@ -30,6 +31,9 @@ public class ServicioGestorCuentas extends ServicioProtegido {
             return false;
         }
         return this.servicioGestionCuentas.eliminarCuenta(perfilUsuario.generarCredenciales());
+    }
+    public Cuenta obtenerCuenta(int numeroCuenta) {
+        return this.servicioGestionCuentas.obtenerCuenta(numeroCuenta);
     }
     public List<String> obtenerVistaOperacionesPendientes(CredencialesUsuario credenciales) {
         if (super.credencialesInvalidas(credenciales)) {
