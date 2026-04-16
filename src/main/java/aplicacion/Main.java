@@ -5,7 +5,9 @@ import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.BancoM.usuarios.RolUsuario;
 import aplicacion.interfazComun.Aplicacion;
 import aplicacion.interfazComun.MenuAplicacion;
+import aplicacion.interfazComun.ServicioEntrada;
 
+import java.util.Scanner;
 import java.util.Set;
 
 class Main {
@@ -19,6 +21,8 @@ class Main {
 
         MenuAplicacion menuAplicacion = new MenuAplicacion(null, banco);
         Aplicacion app = new Aplicacion(menuAplicacion);
-        app.ejecutar();
+        Scanner scanner = new Scanner(System.in);
+        ServicioEntrada servicioEntrada = new ServicioEntrada(scanner);
+        app.ejecutar(servicioEntrada, null);
     }
 }

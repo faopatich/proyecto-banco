@@ -1,6 +1,8 @@
 package aplicacion.BancoM.menu;
 
 import aplicacion.BancoM.menu.comandos.ServicioComandoMenu;
+import aplicacion.interfazComun.ManejadorTransacciones;
+import aplicacion.interfazComun.ServicioEntrada;
 
 public class BancoMMenuGestorCuentas extends BancoMMenu {
     public BancoMMenuGestorCuentas(ServicioComandoMenu servicioComandoMenu) {
@@ -17,7 +19,7 @@ public class BancoMMenuGestorCuentas extends BancoMMenu {
         System.out.println(" 5. salir");
     }
 
-    public void ejecutar() {
+    public void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones) {
         this.mostrarTitulo();
         super.manejarComandos();
     }

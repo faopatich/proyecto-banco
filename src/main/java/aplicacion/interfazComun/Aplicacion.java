@@ -7,7 +7,7 @@ public class Aplicacion {
         this.menuAplicacion = menuAplicacion;
     }
 
-    public void ejecutar() {
-        this.menuAplicacion.ejecutar();
+    public void ejecutar(ServicioEntrada servicioEntrada,ManejadorTransacciones manejadorTransacciones) {
+        this.menuAplicacion.ejecutar(servicioEntrada, manejadorTransacciones);
     }
 }
