@@ -1,13 +1,8 @@
 package aplicacion.BancoM.menu.comandos;
 
-import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
-import aplicacion.BancoM.usuarios.PerfilUsuario;
+public class ComandoAyuda implements ComandoMenu {
 
-public class ComandoAyuda extends ComandoGestorCuenta {
-
-    public ComandoAyuda(ServicioGestorCuentas servicioGestorCuentas, PerfilUsuario perfilUsuarioGestorCuentas) {
-        super(servicioGestorCuentas, perfilUsuarioGestorCuentas);
-    }
+    public ComandoAyuda() {}
 
     @Override
     public void ejecutar() {

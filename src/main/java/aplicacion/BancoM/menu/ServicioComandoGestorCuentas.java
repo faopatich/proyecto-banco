@@ -1,6 +1,5 @@
 package aplicacion.BancoM.menu;
 
-import aplicacion.BancoM.menu.comandos.ComandoGestorCuenta;
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 
 public class ServicioComandoGestorCuentas {
