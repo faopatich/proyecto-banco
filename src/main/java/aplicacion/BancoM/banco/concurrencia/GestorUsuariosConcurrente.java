@@ -1,0 +1,33 @@
+package aplicacion.BancoM.banco.concurrencia;
+
+import aplicacion.BancoM.banco.AccesoBaseDeDatos;
+import aplicacion.BancoM.banco.GestorUsuarios;
+import aplicacion.BancoM.usuarios.CredencialesUsuario;
+import aplicacion.BancoM.usuarios.PerfilUsuario;
+import aplicacion.BancoM.usuarios.RolUsuario;
+
+import java.util.Set;
+
+public class GestorUsuariosConcurrente {
+    private final GestorUsuarios gestorUsuarios;
+
+    public GestorUsuariosConcurrente(GestorUsuarios gestorUsuarios) {
+        this.gestorUsuarios = gestorUsuarios;
+    }
+
+    public boolean verificarCredencialesUsuario(CredencialesUsuario credencialesUsuario) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorUsuarios.verificarCredencialesUsuario(bdd, credencialesUsuario)
+        );
+    }
+    public boolean agregarUsuarioSiNoExiste(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorUsuarios.agregarUsuarioSiNoExiste(bdd, perfilUsuario, rolesUsuario)
+        );
+    }
+    public boolean eliminarRolDeUsuarioSiExiste(CredencialesUsuario credencialesUsuario, RolUsuario rolUsuario) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorUsuarios.eliminarRolDeUsuarioSiExiste(bdd, credencialesUsuario, rolUsuario)
+        );
+    }
+}
