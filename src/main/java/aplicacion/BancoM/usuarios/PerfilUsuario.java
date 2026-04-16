@@ -1,6 +1,6 @@
 package aplicacion.BancoM.usuarios;
 
-public class PerfilUsuario {
+public class PerfilUsuario implements Cloneable {
     // Obligatorios
     private final String nombre;
     private String contr;
@@ -51,5 +51,14 @@ public class PerfilUsuario {
 
     public CredencialesUsuario generarCredenciales() {
         return new CredencialesUsuario(this.nombre, this.contr);
+    }
+
+    @Override
+    public PerfilUsuario clone() {
+        try {
+            return (PerfilUsuario) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
