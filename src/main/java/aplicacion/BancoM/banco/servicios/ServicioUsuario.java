@@ -23,6 +23,9 @@ public class ServicioUsuario {
                 rolUsuario
         );
     }
+    public PerfilUsuario obtenerPerfilDeUsuario(CredencialesUsuario credencialesUsuario) {
+        return this.gestorUsuariosConcurrente.obtenerPerfilDeUsuario(credencialesUsuario);
+    }
     public Set<RolUsuario> obtenerRolesDeUsuario(CredencialesUsuario credencialesUsuario) {
         return this.gestorUsuariosConcurrente.obtenerRolesDeUsuario(credencialesUsuario);
     }
