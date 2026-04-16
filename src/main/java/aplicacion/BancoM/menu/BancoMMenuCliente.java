@@ -1,5 +1,7 @@
 package aplicacion.BancoM.menu;
 
+import aplicacion.BancoM.menu.comandos.ServicioComandoMenu;
+
 public class BancoMMenuCliente extends BancoMMenu {
     BancoMMenuCliente(ServicioComandoMenu servicioComandoMenu) {
         super(servicioComandoMenu);

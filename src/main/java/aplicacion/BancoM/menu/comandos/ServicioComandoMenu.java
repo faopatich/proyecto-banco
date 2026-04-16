@@ -1,7 +1,5 @@
-package aplicacion.BancoM.menu;
+package aplicacion.BancoM.menu.comandos;
 
-import aplicacion.BancoM.menu.comandos.ComandoMenu;
-import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
 import aplicacion.interfazComun.ServicioEntrada;
 
 public abstract class ServicioComandoMenu {

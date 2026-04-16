@@ -1,7 +1,6 @@
-package aplicacion.BancoM.menu;
+package aplicacion.BancoM.menu.comandos;
 
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
-import aplicacion.BancoM.menu.comandos.*;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class FabricaComandoGestorCuentas implements FabricaComandoMenu {

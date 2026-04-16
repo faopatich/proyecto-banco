@@ -2,6 +2,7 @@ package aplicacion.BancoM.menu;
 
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.menu.comandos.ComandoSalir;
+import aplicacion.BancoM.menu.comandos.ServicioComandoMenu;
 import aplicacion.interfazComun.Menu;
 
 public abstract class BancoMMenu implements Menu {
