@@ -1,0 +1,21 @@
+package BancoM.proyectoBanco.banco;
+
+import BancoM.proyectoBanco.cuentas.Cuenta;
+import BancoM.proyectoBanco.usuarios.PerfilUsuario;
+import BancoM.proyectoBanco.usuarios.RolUsuario;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class BaseDeDatos {
+    public final Map<String, Cuenta> cuentas;
+    public final Map<String, PerfilUsuario> perfiles;
+    public final Map<String, Set<RolUsuario>> roles;
+
+    BaseDeDatos() {
+        this.cuentas = new HashMap<>();
+        this.perfiles = new HashMap<>();
+        this.roles = new HashMap<>();
+    }
+}

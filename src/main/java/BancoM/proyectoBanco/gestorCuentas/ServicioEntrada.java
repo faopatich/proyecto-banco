@@ -1,0 +1,15 @@
+package BancoM.proyectoBanco.gestorCuentas;
+
+import java.util.Scanner;
+
+public class ServicioEntrada {
+    private final Scanner scanner;
+
+    public ServicioEntrada(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public String leer() {
+        return this.scanner.nextLine();
+    }
+}
