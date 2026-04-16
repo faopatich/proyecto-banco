@@ -1,6 +1,7 @@
 package aplicacion.BancoM.menu;
 
 import aplicacion.BancoM.menu.comandos.ComandoGestorCuenta;
+import aplicacion.BancoM.menu.comandos.ComandoMenu;
 
 public class ServicioComandoGestorCuentas {
     private final ServicioEntrada servicioEntrada;
@@ -11,7 +12,7 @@ public class ServicioComandoGestorCuentas {
         this.fabricaComandoGestorCuentas = fabricaComandoGestorCuentas;
     }
 
-    public ComandoGestorCuenta siguienteComando() {
+    public ComandoMenu siguienteComando() {
         return this.fabricaComandoGestorCuentas.crear(
                 this.servicioEntrada.leer()
         );
