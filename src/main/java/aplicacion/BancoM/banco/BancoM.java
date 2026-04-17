@@ -42,6 +42,9 @@ public class BancoM implements Banco {
     @Override
     public Menu login(Credenciales credenciales) {
         var credecialesUsuario = this.crearCredenciales(credenciales);
+        if (!this.sucursal.gestorUsuariosConcurrente.verificarCredencialesUsuario(credecialesUsuario)) {
+            return null;
+        }
         var perfilUsuario = this.sucursal.servicioUsuario.obtenerPerfilDeUsuario(credecialesUsuario);
         var rolesUsuario = this.sucursal.servicioUsuario.obtenerRolesDeUsuario(credecialesUsuario);
 
