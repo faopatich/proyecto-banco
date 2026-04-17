@@ -25,15 +25,26 @@ public class ComandoTransferencia implements ComandoMenu {
 
     @Override
     public void ejecutar() {
-        var cuenta = this.banco.sucursal.servicioGestionCuentas.obtenerCuenta(
-                this.perfilUsuario.generarCredenciales().usuario()
-        );
+        var cuenta = this.banco
+                .sucursal
+                .servicioGestionCuentas
+                .obtenerCuenta(this.perfilUsuario.generarCredenciales().usuario());
+        if (cuenta == null) {
+            System.out.println("No tiene una cuenta en este banco");
+            return;
+        }
         var nuevaCuenta = this.manejadorTransacciones.transferir(
                 cuenta,
                 this.nombreBanco,
                 this.numeroCuenta,
                 this.saldo
         );
-        banco.sucursal.gestorCuentasConcurrente.actualizarCuenta((Cuenta) nuevaCuenta);
+        if (nuevaCuenta == null) {
+            System.out.println("No fue posible realizar la transferencia");
+            return;
+        }
+        banco.sucursal
+                .gestorCuentasConcurrente
+                .actualizarCuenta((Cuenta) nuevaCuenta);
     }
 }

@@ -15,10 +15,15 @@ public class ComandoEstado implements ComandoMenu {
 
     @Override
     public void ejecutar() {
-        this.bancoM.sucursal
+        var cuenta = this.bancoM.sucursal
                 .gestorCuentasConcurrente
                 .obtenerCuenta(
                         this.perfilUsuario.obtenerNombre()
-                ).verBalance();
+                );
+        if (cuenta == null) {
+            System.out.println("No tiene una cuenta en este banco");
+        } else {
+            cuenta.verBalance();
+        }
     }
 }

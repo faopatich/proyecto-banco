@@ -17,11 +17,15 @@ public class ComandoRetirar implements ComandoMenu {
 
     @Override
     public void ejecutar() {
-        var resultado = bancoM.sucursal.gestorCuentasConcurrente
+        var cuenta = bancoM.sucursal.gestorCuentasConcurrente
                 .obtenerCuenta(
                         perfilUsuario.obtenerNombre()
-                )
-                .retirar(this.saldo);
+                );
+        if (cuenta == null) {
+            System.out.println("No tiene una cuenta en este banco");
+            return;
+        }
+        var resultado = cuenta.retirar(this.saldo);
         if (resultado) {
             System.out.println("Retiro correcto");
         } else {

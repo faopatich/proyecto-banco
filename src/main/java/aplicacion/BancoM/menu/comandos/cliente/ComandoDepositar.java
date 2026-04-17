@@ -17,11 +17,15 @@ public class ComandoDepositar implements ComandoMenu {
 
     @Override
     public void ejecutar() {
-        var resultado = bancoM.sucursal.gestorCuentasConcurrente
+        var cuenta = bancoM.sucursal.gestorCuentasConcurrente
                 .obtenerCuenta(
                         perfilUsuario.obtenerNombre()
-                )
-                .depositar(this.saldo);
+                );
+        if (cuenta == null) {
+            System.out.println("No tiene una cuenta en este banco");
+            return;
+        }
+        var resultado = cuenta.depositar(this.saldo);
         if (resultado) {
             System.out.println("Depósito correcto");
         } else {
