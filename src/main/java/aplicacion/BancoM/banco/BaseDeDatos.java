@@ -5,6 +5,7 @@ import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.BancoM.usuarios.RolUsuario;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,10 +13,14 @@ public class BaseDeDatos {
     public final Map<String, Cuenta> cuentas;
     public final Map<String, PerfilUsuario> perfiles;
     public final Map<String, Set<RolUsuario>> roles;
+    public final Set<String> sucursales;
+    public final Map<String, String> gestores;
 
     BaseDeDatos() {
         this.cuentas = new HashMap<>();
         this.perfiles = new HashMap<>();
         this.roles = new HashMap<>();
+        this.sucursales = new HashSet<>();
+        this.gestores = new HashMap<>();
     }
 }

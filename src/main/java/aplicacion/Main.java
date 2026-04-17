@@ -17,12 +17,16 @@ class Main {
     public static void main(String[] args) {
         Banco bancoF = new Banco("BancoF");
         BancoM bancoM = new BancoM();
+        bancoM.agregaSucursal("paseo-colon");
+        bancoM.agregaSucursal("av-brasil");
 
         var perfilMateo = new PerfilUsuario("Mateo", "Contr", "Hoy");
-        var perfilGestor = new PerfilUsuario("Gestor", "Contr", "Hoy");
-        bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(perfilMateo, Set.of(RolUsuario.Cliente));
-        bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(perfilGestor, Set.of(RolUsuario.GestorCuentas));
-        bancoM.sucursal.servicioGestionCuentas.crearCuenta(perfilMateo.generarCredenciales(), TipoCuenta.CuentaAhorro);
+        var perfilGestor1 = new PerfilUsuario("Gestor1", "Contr", "Hoy");
+        var perfilGestor2 = new PerfilUsuario("Gestor2", "Contr", "Hoy");
+        bancoM.agregarCliente(perfilMateo);
+        bancoM.agregarGestorCuentas(perfilGestor1, "paseo-colon");
+        bancoM.agregarGestorCuentas(perfilGestor2, "av-brasil");
+        bancoM.agregarCuenta(perfilMateo.generarCredenciales(), TipoCuenta.CuentaAhorro);
 
         aplicacion.BancoF.Cliente.Builder builder = new Cliente.Builder();
         builder.setUsername("Franco")

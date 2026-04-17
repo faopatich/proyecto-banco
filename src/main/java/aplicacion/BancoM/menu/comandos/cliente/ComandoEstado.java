@@ -1,21 +1,22 @@
 package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.banco.Sucursal;
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class ComandoEstado implements ComandoMenu {
-    private final BancoM bancoM;
+    private final Sucursal sucursal;
     private final PerfilUsuario perfilUsuario;
 
-    public ComandoEstado(BancoM bancoM, PerfilUsuario perfilUsuario) {
-        this.bancoM  = bancoM;
+    public ComandoEstado(Sucursal sucursal, PerfilUsuario perfilUsuario) {
+        this.sucursal  = sucursal;
         this.perfilUsuario = perfilUsuario;
     }
 
     @Override
     public void ejecutar() {
-        var cuenta = this.bancoM.sucursal
+        var cuenta = this.sucursal
                 .gestorCuentasConcurrente
                 .obtenerCuenta(
                         this.perfilUsuario.obtenerNombre()
