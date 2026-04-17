@@ -1,12 +1,12 @@
 package aplicacion.BancoM.menu;
 
-import aplicacion.BancoM.menu.comandos.ServicioComandoMenu;
+import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
 import aplicacion.interfazComun.ManejadorTransacciones;
 import aplicacion.interfazComun.ServicioEntrada;
 
 public class BancoMMenuCliente extends BancoMMenu {
-    public BancoMMenuCliente(ServicioComandoMenu servicioComandoMenu) {
-        super(servicioComandoMenu);
+    public BancoMMenuCliente(FabricaComandoMenu fabricaComandoMenu) {
+        super(fabricaComandoMenu);
     }
 
     private void mostrarTitulo() {
@@ -18,6 +18,6 @@ public class BancoMMenuCliente extends BancoMMenu {
 
     public void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones) {
         this.mostrarTitulo();
-        super.manejarComandos();
+        super.manejarComandos(servicioEntrada);
     }
 }

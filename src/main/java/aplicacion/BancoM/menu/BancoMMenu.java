@@ -2,22 +2,23 @@ package aplicacion.BancoM.menu;
 
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.menu.comandos.ComandoSalir;
+import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
 import aplicacion.BancoM.menu.comandos.ServicioComandoMenu;
 import aplicacion.interfazComun.ManejadorTransacciones;
 import aplicacion.interfazComun.Menu;
 import aplicacion.interfazComun.ServicioEntrada;
 
 public abstract class BancoMMenu implements Menu {
-    protected final ServicioComandoMenu servicioComandoMenu;
+    protected final FabricaComandoMenu fabricaComandoMenu;
 
-    BancoMMenu(ServicioComandoMenu servicioComandoMenu) {
-        this.servicioComandoMenu = servicioComandoMenu;
+    BancoMMenu(FabricaComandoMenu fabricaComandoMenu) {
+        this.fabricaComandoMenu = fabricaComandoMenu;
     }
 
-    protected boolean manejarComando() {
+    protected boolean manejarComando(ServicioComandoMenu servicioComandoMenu) {
         ComandoMenu comando;
         System.out.print("\n> ");
-        comando = this.servicioComandoMenu.obtenerComando();
+        comando = servicioComandoMenu.obtenerComando();
         if (comando instanceof ComandoSalir) {
             return false;
         }
@@ -29,8 +30,9 @@ public abstract class BancoMMenu implements Menu {
         return true;
     }
 
-    protected void manejarComandos() {
-        while (this.manejarComando()) {}
+    protected void manejarComandos(ServicioEntrada servicioEntrada) {
+        ServicioComandoMenu servicioComandoMenu = new ServicioComandoMenu(servicioEntrada, this.fabricaComandoMenu);
+        while (this.manejarComando(servicioComandoMenu)) {}
     }
 
     public abstract void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones);

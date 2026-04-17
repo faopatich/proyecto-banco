@@ -26,21 +26,16 @@ public class BancoM implements Banco {
 
     private Menu obtenerMenu(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
         Menu menu = null;
-        Scanner scanner = new Scanner(System.in);
-        ServicioEntrada servicioEntrada = new ServicioEntrada(scanner);
         FabricaComandoMenu fabricaComandoMenu;
-        ServicioComandoMenu servicioComandoMenu;
         if (rolesUsuario.contains(RolUsuario.GestorCuentas)) {
             fabricaComandoMenu = new FabricaComandoGestorCuentas(
                     this.sucursal.servicioGestorCuentas,
                     perfilUsuario
             );
-            servicioComandoMenu = new ServicioComandoMenu(servicioEntrada, fabricaComandoMenu);
-            menu = new BancoMMenuGestorCuentas(servicioComandoMenu);
+            menu = new BancoMMenuGestorCuentas(fabricaComandoMenu);
         } else if (rolesUsuario.contains(RolUsuario.Cliente)) {
             fabricaComandoMenu = new FabricaComandoCliente();
-            servicioComandoMenu = new ServicioComandoMenu(servicioEntrada, fabricaComandoMenu);
-            menu = new BancoMMenuCliente(servicioComandoMenu);
+            menu = new BancoMMenuCliente(fabricaComandoMenu);
         }
         return menu;
     }
@@ -63,6 +58,10 @@ public class BancoM implements Banco {
 
     @Override
     public Cuenta obtenerCuenta(String numeroCuenta) {
-        return this.sucursal.servicioGestorCuentas.obtenerCuenta(Integer.parseInt(numeroCuenta));
+        try {
+            return this.sucursal.servicioGestorCuentas.obtenerCuenta(Integer.parseInt(numeroCuenta));
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }
