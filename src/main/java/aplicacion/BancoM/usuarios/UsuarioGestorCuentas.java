@@ -2,7 +2,7 @@ package aplicacion.BancoM.usuarios;
 
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
 import aplicacion.BancoM.cuentas.TipoCuenta;
-import aplicacion.BancoM.menu.comandos.ComandoListar;
+import aplicacion.BancoM.menu.comandos.gestor.ComandoListar;
 
 public class UsuarioGestorCuentas extends Usuario {
     private final ServicioGestorCuentas servicioGestorCuentas;

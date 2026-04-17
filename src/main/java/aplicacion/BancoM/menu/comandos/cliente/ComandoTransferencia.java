@@ -1,7 +1,8 @@
-package aplicacion.BancoM.menu.comandos;
+package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
 import aplicacion.BancoM.cuentas.Cuenta;
+import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.interfazComun.ManejadorTransacciones;
 
@@ -33,8 +34,6 @@ public class ComandoTransferencia implements ComandoMenu {
                 this.numeroCuenta,
                 this.saldo
         );
-        if (nuevaCuenta != null) {
-            cuenta.copy((Cuenta) nuevaCuenta);
-        }
+        banco.sucursal.gestorCuentasConcurrente.actualizarCuenta((Cuenta) nuevaCuenta);
     }
 }

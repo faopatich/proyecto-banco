@@ -1,6 +1,10 @@
-package aplicacion.BancoM.menu.comandos;
+package aplicacion.BancoM.menu.comandos.gestor;
 
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
+import aplicacion.BancoM.menu.comandos.ComandoAyuda;
+import aplicacion.BancoM.menu.comandos.ComandoMenu;
+import aplicacion.BancoM.menu.comandos.ComandoSalir;
+import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class FabricaComandoGestorCuentas implements FabricaComandoMenu {

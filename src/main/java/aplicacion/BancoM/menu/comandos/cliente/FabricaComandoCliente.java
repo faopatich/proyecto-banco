@@ -1,6 +1,9 @@
-package aplicacion.BancoM.menu.comandos;
+package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.menu.comandos.ComandoMenu;
+import aplicacion.BancoM.menu.comandos.ComandoSalir;
+import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.interfazComun.ManejadorTransacciones;
 
@@ -25,7 +28,7 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
 
     private ComandoMenu crearComandoTransferencia(String entrada) {
         var argumentos = entrada.split(" ");
-        if (argumentos.length != 4) {
+        if (argumentos.length != 4 && !argumentos[0].equals("transferencia")) {
             return null;
         }
         var codigoCuenta = argumentos[2];
@@ -33,7 +36,14 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
         if (codigoCuenta == null || saldo == null) {
             return null;
         }
-        return new ComandoTransferencia(manejadorTransacciones, this.bancoM, this.perfilUsuario, argumentos[1], codigoCuenta, saldo);
+        return new ComandoTransferencia(
+                manejadorTransacciones,
+                this.bancoM,
+                this.perfilUsuario,
+                argumentos[1],
+                codigoCuenta,
+                saldo
+        );
     }
 
     @Override
@@ -43,6 +53,9 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
                 return this.crearComandoTransferencia(entrada);
             }
             case 'e' -> {
+                if (entrada.equals("transferencia")) {
+                    return null;
+                }
                 return new ComandoEstado(this.bancoM, this.perfilUsuario);
             }
             case 's' -> {

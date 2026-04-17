@@ -1,6 +1,7 @@
-package aplicacion.BancoM.menu.comandos;
+package aplicacion.BancoM.menu.comandos.gestor;
 
 import aplicacion.BancoM.banco.servicios.ServicioGestorCuentas;
+import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class ComandoListar implements ComandoMenu {

@@ -52,4 +52,21 @@ public class GestorCuentas {
         }
         return cuenta;
     }
+    public void actualizarCuenta(Map<String, Cuenta> cuentas, Cuenta nuevaCuenta) {
+        Cuenta cuenta = null;
+        var cuentasOriginales = cuentas.values().stream().toList();
+        int i = 0;
+        while (i < cuentas.size()) {
+            var c = cuentasOriginales.get(i);
+            if (c.obtenerNumeroCuenta() == nuevaCuenta.obtenerNumeroCuenta()) {
+                cuenta = c;
+                break;
+            }
+            i++;
+        }
+        if (cuenta == null) {
+            return;
+        }
+        cuenta.copy(nuevaCuenta);
+    }
 }

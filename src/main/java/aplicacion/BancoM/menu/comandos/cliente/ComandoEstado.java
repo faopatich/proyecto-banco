@@ -1,6 +1,7 @@
-package aplicacion.BancoM.menu.comandos;
+package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class ComandoEstado implements ComandoMenu {

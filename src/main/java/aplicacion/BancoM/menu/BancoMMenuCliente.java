@@ -1,8 +1,7 @@
 package aplicacion.BancoM.menu;
 
 import aplicacion.BancoM.banco.BancoM;
-import aplicacion.BancoM.menu.comandos.FabricaComandoCliente;
-import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
+import aplicacion.BancoM.menu.comandos.cliente.FabricaComandoCliente;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.interfazComun.ManejadorTransacciones;
 import aplicacion.interfazComun.ServicioEntrada;
