@@ -24,16 +24,25 @@ class Main {
         bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(perfilGestor, Set.of(RolUsuario.GestorCuentas));
         bancoM.sucursal.servicioGestionCuentas.crearCuenta(perfilMateo.generarCredenciales(), TipoCuenta.CuentaAhorro);
 
-        aplicacion.BancoF.Cliente.Builder builder = new Cliente.Builder();
-        builder.setUsername("Franco")
-                .setPassword("Contr");
-        Cliente clienteF = builder.build();
-        Cuenta cuentaF = new Cuenta("Caja de ahorro");
-        cuentaF.sumarSaldo(200);
-        clienteF.setCuenta(cuentaF);
-        Sucursal sucursalF = new Sucursal("X", "S", new AdminSucursal("", "", "", "Contr", "X"));
-        bancoF.agregarSucursal(sucursalF);
-        sucursalF.agregarCliente(clienteF);
+
+        AdminSucursal adminCentral = UsuarioFactory.crearAdminSucursal(
+                "Admin Central",
+                "11111111",
+                "central",
+                "1234",
+                "S001"
+        );
+
+        AdminSucursal adminPalermo = UsuarioFactory.crearAdminSucursal(
+                "Admin Palermo",
+                "22222222",
+                "palermo",
+                "1234",
+                "S002"
+        );
+        var sucursal = new Sucursal("S001", "Casa Central", adminCentral);
+        bancoF.agregarSucursal(sucursal);
+        bancoF.agregarSucursal(new Sucursal("S002", "Palermo", adminPalermo));
 
         MenuAplicacion menuAplicacion = new MenuAplicacion(bancoF, bancoM);
         ManejadorTransacciones manejadorTransacciones = new ManejadorTransacciones(bancoF, bancoM);
