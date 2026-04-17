@@ -1,23 +1,37 @@
 package aplicacion.BancoM.menu;
 
+import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.menu.comandos.FabricaComandoCliente;
 import aplicacion.BancoM.menu.comandos.FabricaComandoMenu;
+import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.interfazComun.ManejadorTransacciones;
 import aplicacion.interfazComun.ServicioEntrada;
 
 public class BancoMMenuCliente extends BancoMMenu {
-    public BancoMMenuCliente(FabricaComandoMenu fabricaComandoMenu) {
-        super(fabricaComandoMenu);
+    private final BancoM bancoM;
+    private final PerfilUsuario perfilUsuario;
+
+    public BancoMMenuCliente(BancoM bancoM, PerfilUsuario perfilUsuario) {
+        super(null);
+        this.bancoM = bancoM;
+        this.perfilUsuario  = perfilUsuario;
     }
 
     private void mostrarTitulo() {
         System.out.println("Menu de cliente\n");
         System.out.println("Escribe algunos de los siguientes comandos:");
         System.out.println(" 1. transferencia <banco> <num cuenta> <saldo>");
-        System.out.println(" 2. salir");
+        System.out.println(" 2. estado");
+        System.out.println(" 3. salir");
     }
 
     public void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones) {
         this.mostrarTitulo();
+        super.fabricaComandoMenu = new FabricaComandoCliente(
+                manejadorTransacciones,
+                this.bancoM,
+                this.perfilUsuario
+        );
         super.manejarComandos(servicioEntrada);
     }
 }

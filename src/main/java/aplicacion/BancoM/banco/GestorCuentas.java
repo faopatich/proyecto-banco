@@ -50,9 +50,6 @@ public class GestorCuentas {
             }
             i++;
         }
-        if (cuenta == null) {
-            return null;
-        }
-        return cuenta.clone();
+        return cuenta;
     }
 }

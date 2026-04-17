@@ -19,6 +19,12 @@ public class ManejadorTransacciones {
             return null;
         }
         var receptor = b.obtenerCuenta(numeroCuentaReceptor);
+        if (receptor == null || emisor == null) {
+            return null;
+        }
+        System.out.println("IMPRIMIENDO");
+        System.out.println(receptor);
+        System.out.println(emisor);
         if (!emisor.retirar(saldo)) {
             return null;
         }

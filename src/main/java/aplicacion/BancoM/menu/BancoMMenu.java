@@ -9,7 +9,7 @@ import aplicacion.interfazComun.Menu;
 import aplicacion.interfazComun.ServicioEntrada;
 
 public abstract class BancoMMenu implements Menu {
-    protected final FabricaComandoMenu fabricaComandoMenu;
+    protected FabricaComandoMenu fabricaComandoMenu;
 
     BancoMMenu(FabricaComandoMenu fabricaComandoMenu) {
         this.fabricaComandoMenu = fabricaComandoMenu;

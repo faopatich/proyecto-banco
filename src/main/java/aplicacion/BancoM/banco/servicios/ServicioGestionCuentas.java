@@ -21,6 +21,9 @@ public class ServicioGestionCuentas {
     public boolean eliminarCuenta(CredencialesUsuario credenciales) {
         return this.gestorCuentasConcurrente.eliminarCuenta(credenciales.usuario());
     }
+    public Cuenta obtenerCuenta(String usuario) {
+        return this.gestorCuentasConcurrente.obtenerCuenta(usuario);
+    }
     public Cuenta obtenerCuenta(int numeroCuenta) {
         return this.gestorCuentasConcurrente.obtenerCuenta(numeroCuenta);
     }

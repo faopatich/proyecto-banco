@@ -21,6 +21,12 @@ public abstract class Cuenta implements aplicacion.interfazComun.Cuenta, Cloneab
 
     public abstract boolean transferir(Cuenta cuenta, int cantidad);
 
+    public void copy(Cuenta otro) {
+        this.propietario = otro.propietario;
+        this.numeroCuenta = otro.numeroCuenta;
+        this.saldo = otro.saldo;
+    }
+
     @Override
     public Cuenta clone() {
         try {

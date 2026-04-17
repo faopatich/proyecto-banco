@@ -26,16 +26,14 @@ public class BancoM implements Banco {
 
     private Menu obtenerMenu(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
         Menu menu = null;
-        FabricaComandoMenu fabricaComandoMenu;
         if (rolesUsuario.contains(RolUsuario.GestorCuentas)) {
-            fabricaComandoMenu = new FabricaComandoGestorCuentas(
+            FabricaComandoMenu fabricaComandoMenu = new FabricaComandoGestorCuentas(
                     this.sucursal.servicioGestorCuentas,
                     perfilUsuario
             );
             menu = new BancoMMenuGestorCuentas(fabricaComandoMenu);
         } else if (rolesUsuario.contains(RolUsuario.Cliente)) {
-            fabricaComandoMenu = new FabricaComandoCliente();
-            menu = new BancoMMenuCliente(fabricaComandoMenu);
+            menu = new BancoMMenuCliente(this, perfilUsuario);
         }
         return menu;
     }
