@@ -19,11 +19,10 @@ class Main {
         Banco bancoF = new Banco("BancoF");
         BancoM bancoM = new BancoM();
 
-        bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(
-                new PerfilUsuario("Mateo", "Contr", "Hoy"),
-                Set.of(RolUsuario.Cliente)
-        );
-        bancoM.sucursal.creadorCuenta.crearCuenta(TipoCuenta.CuentaAhorro,"Mateo",0);
+        var perfilMateo = new PerfilUsuario("Mateo", "Contr", "Hoy");
+
+        bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(perfilMateo, Set.of(RolUsuario.Cliente));
+        bancoM.sucursal.servicioGestionCuentas.crearCuenta(perfilMateo.generarCredenciales(), TipoCuenta.CuentaAhorro);
         Cuenta cuenta = new Cuenta("Caja de ahorro");
         cuenta.sumarSaldo(200);
 
