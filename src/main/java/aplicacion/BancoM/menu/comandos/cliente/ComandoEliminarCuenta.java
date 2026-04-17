@@ -15,13 +15,14 @@ public class ComandoEliminarCuenta implements ComandoMenu {
 
     @Override
     public void ejecutar() {
-        var resultado = this.bancoM.sucursal.gestorCuentasConcurrente.eliminarCuenta(
-                this.perfilUsuario.obtenerNombre()
-        );
+        var resultado = this.bancoM
+                .sucursal
+                .servicioCliente
+                .solicitarEliminarCuenta(this.perfilUsuario.generarCredenciales());
         if (resultado) {
-            System.out.println("Cuenta eliminada exitosamente");
+            System.out.println("Se ha solicitado eliminar su cuenta de forma exitosa");
         } else {
-            System.out.println("No fue posible eliminar la cuenta");
+            System.out.println("No fue posible solicitar la creación de au cuenta");
         }
     }
 }

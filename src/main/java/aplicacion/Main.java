@@ -19,7 +19,9 @@ class Main {
         BancoM bancoM = new BancoM();
 
         var perfilMateo = new PerfilUsuario("Mateo", "Contr", "Hoy");
+        var perfilGestor = new PerfilUsuario("Gestor", "Contr", "Hoy");
         bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(perfilMateo, Set.of(RolUsuario.Cliente));
+        bancoM.sucursal.servicioUsuario.crearUsuarioSiNoExiste(perfilGestor, Set.of(RolUsuario.GestorCuentas));
         bancoM.sucursal.servicioGestionCuentas.crearCuenta(perfilMateo.generarCredenciales(), TipoCuenta.CuentaAhorro);
 
         aplicacion.BancoF.Cliente.Builder builder = new Cliente.Builder();

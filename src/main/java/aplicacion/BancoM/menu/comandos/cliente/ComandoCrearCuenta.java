@@ -18,14 +18,14 @@ public class ComandoCrearCuenta implements ComandoMenu {
 
     @Override
     public void ejecutar() {
-        var resultado = this.bancoM.sucursal.gestorCuentasConcurrente.crearCuenta(
-                this.perfilUsuario.obtenerNombre(),
-                this.tipoCuenta
-        );
+        var resultado = this.bancoM
+                .sucursal
+                .servicioCliente
+                .solicitarCrearCuenta(this.perfilUsuario.generarCredenciales(), this.tipoCuenta);
         if (resultado) {
-            System.out.println("Cuenta creada exitosamente");
+            System.out.println("Se ha solicitado crear una cuenta de forma exitosa");
         } else {
-            System.out.println("No fue posible crear la cuenta");
+            System.out.println("No fue posible solicitar la creación de una cuenta");
         }
     }
 }
