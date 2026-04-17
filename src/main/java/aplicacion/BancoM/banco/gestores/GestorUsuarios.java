@@ -1,5 +1,6 @@
-package aplicacion.BancoM.banco;
+package aplicacion.BancoM.banco.gestores;
 
+import aplicacion.BancoM.banco.BaseDeDatos;
 import aplicacion.BancoM.usuarios.CredencialesUsuario;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.BancoM.usuarios.RolUsuario;

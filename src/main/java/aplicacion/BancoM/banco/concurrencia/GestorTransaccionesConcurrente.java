@@ -1,7 +1,7 @@
 package aplicacion.BancoM.banco.concurrencia;
 
 import aplicacion.BancoM.banco.AccesoBaseDeDatos;
-import aplicacion.BancoM.banco.GestorTransacciones;
+import aplicacion.BancoM.banco.gestores.GestorTransacciones;
 
 public class GestorTransaccionesConcurrente {
     private final GestorTransacciones gestorTransacciones;

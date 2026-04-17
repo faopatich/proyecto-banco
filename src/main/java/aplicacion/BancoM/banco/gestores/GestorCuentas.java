@@ -1,4 +1,4 @@
-package aplicacion.BancoM.banco;
+package aplicacion.BancoM.banco.gestores;
 
 import aplicacion.BancoM.cuentas.CreadorCuenta;
 import aplicacion.BancoM.cuentas.Cuenta;

@@ -1,7 +1,7 @@
 package aplicacion.BancoM.banco.concurrencia;
 
 import aplicacion.BancoM.banco.AccesoBaseDeDatos;
-import aplicacion.BancoM.banco.GestorUsuarios;
+import aplicacion.BancoM.banco.gestores.GestorUsuarios;
 import aplicacion.BancoM.usuarios.CredencialesUsuario;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.BancoM.usuarios.RolUsuario;

@@ -1,7 +1,7 @@
 package aplicacion.BancoM.banco.concurrencia;
 
 import aplicacion.BancoM.banco.AccesoBaseDeDatos;
-import aplicacion.BancoM.banco.GestorCuentas;
+import aplicacion.BancoM.banco.gestores.GestorCuentas;
 import aplicacion.BancoM.banco.comandos.ComandoCuenta;
 import aplicacion.BancoM.banco.comandos.ComandoCuentaCrearCuenta;
 import aplicacion.BancoM.banco.comandos.ComandoCuentaEliminarCuenta;
