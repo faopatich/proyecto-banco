@@ -19,7 +19,7 @@ public class BancoMMenuCliente extends BancoMMenu {
     private void mostrarTitulo() {
         System.out.println("Menu de cliente\n");
         System.out.println("Escribe algunos de los siguientes comandos:");
-        System.out.println(" 1. crear");
+        System.out.println(" 1. crear <tipo>");
         System.out.println(" 2. transferencia <banco> <num cuenta> <saldo>");
         System.out.println(" 3. estado");
         System.out.println(" 4. depositar");
