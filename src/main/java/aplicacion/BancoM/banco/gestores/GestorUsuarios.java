@@ -1,5 +1,6 @@
 package aplicacion.BancoM.banco.gestores;
 
+import aplicacion.BancoM.banco.AccesoBaseDeDatos;
 import aplicacion.BancoM.banco.BaseDeDatos;
 import aplicacion.BancoM.usuarios.CredencialesUsuario;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
@@ -21,13 +22,34 @@ public class GestorUsuarios {
         }
         return perfilUsuario.obtenerContr().equals(credencialesUsuario.contr());
     }
+    public boolean verificarGestorDeSucursal(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario, String codigoSucursal) {
+        var codigo = bdd.gestores.get(credencialesUsuario.usuario());
+        return codigo != null && codigo.equals(codigoSucursal);
+    }
     public boolean agregarUsuarioSiNoExiste(BaseDeDatos bdd, PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
         var perfil = bdd.perfiles.get(perfilUsuario.obtenerNombre());
         if (perfil != null) {
-            return perfil.generarCredenciales().equals(perfilUsuario.generarCredenciales());
+            if (!perfil.generarCredenciales().equals(perfilUsuario.generarCredenciales())) {
+                return false;
+            }
+        } else {
+            bdd.perfiles.put(perfilUsuario.obtenerNombre(), perfilUsuario);
         }
-        bdd.perfiles.put(perfilUsuario.obtenerNombre(), perfilUsuario);
         this.gestorRoles.agregarRolesDeUsuario(bdd.roles, perfilUsuario.obtenerNombre(), rolesUsuario);
+        return true;
+    }
+    public boolean asignarSucursalDeGestor(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario, String codigoSucursal) {
+        if (!bdd.sucursales.contains(codigoSucursal)) {
+            return false;
+        }
+        var nombre = credencialesUsuario.usuario();
+        if (!this.gestorRoles.verificarUsuarioTieneRol(bdd.roles, nombre, RolUsuario.GestorCuentas)) {
+            return false;
+        }
+        if (bdd.gestores.containsValue(codigoSucursal)) {
+            return false;
+        }
+        bdd.gestores.put(nombre, codigoSucursal);
         return true;
     }
     public boolean eliminarRolDeUsuarioSiExiste(BaseDeDatos bdd, CredencialesUsuario credencialesUsuario, RolUsuario rolUsuario) {

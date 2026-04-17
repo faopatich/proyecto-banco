@@ -1,18 +1,19 @@
 package aplicacion.BancoM.menu;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.banco.Sucursal;
 import aplicacion.BancoM.menu.comandos.cliente.FabricaComandoCliente;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 import aplicacion.interfazComun.ManejadorTransacciones;
 import aplicacion.interfazComun.ServicioEntrada;
 
 public class BancoMMenuCliente extends BancoMMenu {
-    private final BancoM bancoM;
+    private final Sucursal sucursal;
     private final PerfilUsuario perfilUsuario;
 
-    public BancoMMenuCliente(BancoM bancoM, PerfilUsuario perfilUsuario) {
+    public BancoMMenuCliente(Sucursal sucursal, PerfilUsuario perfilUsuario) {
         super(null);
-        this.bancoM = bancoM;
+        this.sucursal = sucursal;
         this.perfilUsuario  = perfilUsuario;
     }
 
@@ -32,7 +33,7 @@ public class BancoMMenuCliente extends BancoMMenu {
         this.mostrarTitulo();
         super.fabricaComandoMenu = new FabricaComandoCliente(
                 manejadorTransacciones,
-                this.bancoM,
+                this.sucursal,
                 this.perfilUsuario
         );
         super.manejarComandos(servicioEntrada);

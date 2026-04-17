@@ -20,9 +20,19 @@ public class GestorUsuariosConcurrente {
                 bdd -> this.gestorUsuarios.verificarCredencialesUsuario(bdd, credencialesUsuario)
         );
     }
+    public boolean verificarGestorDeSucursal(CredencialesUsuario credencialesUsuario, String codigoSucursal) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorUsuarios.verificarGestorDeSucursal(bdd, credencialesUsuario, codigoSucursal)
+        );
+    }
     public boolean agregarUsuarioSiNoExiste(PerfilUsuario perfilUsuario, Set<RolUsuario> rolesUsuario) {
         return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
                 bdd -> this.gestorUsuarios.agregarUsuarioSiNoExiste(bdd, perfilUsuario, rolesUsuario)
+        );
+    }
+    public boolean asignarSucursalDeGestor(CredencialesUsuario credencialesUsuario, String codigoSucursal) {
+        return AccesoBaseDeDatos.ejecutarSobreBaseDeDatos(
+                bdd -> this.gestorUsuarios.asignarSucursalDeGestor(bdd, credencialesUsuario, codigoSucursal)
         );
     }
     public boolean eliminarRolDeUsuarioSiExiste(CredencialesUsuario credencialesUsuario, RolUsuario rolUsuario) {

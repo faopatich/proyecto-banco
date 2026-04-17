@@ -1,6 +1,7 @@
 package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.banco.Sucursal;
 import aplicacion.BancoM.cuentas.TipoCuenta;
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.menu.comandos.ComandoSalir;
@@ -10,12 +11,12 @@ import aplicacion.interfazComun.ManejadorTransacciones;
 
 public class FabricaComandoCliente implements FabricaComandoMenu {
     private final ManejadorTransacciones manejadorTransacciones;
-    private final BancoM bancoM;
+    private final Sucursal sucursal;
     private final PerfilUsuario perfilUsuario;
 
-    public FabricaComandoCliente(ManejadorTransacciones manejadorTransacciones, BancoM bancoM, PerfilUsuario perfilUsuario) {
+    public FabricaComandoCliente(ManejadorTransacciones manejadorTransacciones, Sucursal sucursal, PerfilUsuario perfilUsuario) {
         this.manejadorTransacciones = manejadorTransacciones;
-        this.bancoM = bancoM;
+        this.sucursal = sucursal;
         this.perfilUsuario = perfilUsuario;
     }
 
@@ -36,7 +37,7 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
             return null;
         }
         TipoCuenta tipoCuenta = argumentos[1].equals("ahorro") ? TipoCuenta.CuentaAhorro : TipoCuenta.CuentaCorriente;
-        return new ComandoCrearCuenta(this.bancoM,this.perfilUsuario, tipoCuenta);
+        return new ComandoCrearCuenta(this.sucursal,this.perfilUsuario, tipoCuenta);
     }
 
     private ComandoMenu crearComandoTransferencia(String entrada) {
@@ -51,7 +52,7 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
         }
         return new ComandoTransferencia(
                 manejadorTransacciones,
-                this.bancoM,
+                this.sucursal,
                 this.perfilUsuario,
                 argumentos[1],
                 codigoCuenta,
@@ -68,7 +69,7 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
         if (saldo == null) {
             return null;
         }
-        return new ComandoDepositar(this.bancoM,this.perfilUsuario, saldo);
+        return new ComandoDepositar(this.sucursal,this.perfilUsuario, saldo);
     }
 
     private ComandoMenu crearComandoRetirar(String entrada) {
@@ -80,7 +81,7 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
         if (saldo == null) {
             return null;
         }
-        return new ComandoRetirar(this.bancoM,this.perfilUsuario, saldo);
+        return new ComandoRetirar(this.sucursal,this.perfilUsuario, saldo);
     }
 
     @Override
@@ -94,10 +95,10 @@ public class FabricaComandoCliente implements FabricaComandoMenu {
             }
             case 'e' -> {
                 if (entrada.equals("estado")) {
-                    return new ComandoEstado(this.bancoM, this.perfilUsuario);
+                    return new ComandoEstado(this.sucursal, this.perfilUsuario);
                 }
                 if (entrada.equals("eliminar")) {
-                    return new ComandoEliminarCuenta(this.bancoM, this.perfilUsuario);
+                    return new ComandoEliminarCuenta(this.sucursal, this.perfilUsuario);
                 }
                 return null;
             }

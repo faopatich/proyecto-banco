@@ -1,23 +1,24 @@
 package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.banco.Sucursal;
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class ComandoRetirar implements ComandoMenu {
-    private final BancoM bancoM;
+    private final Sucursal sucursal;
     private final PerfilUsuario perfilUsuario;
     private final int saldo;
 
-    public ComandoRetirar(BancoM bancoM, PerfilUsuario perfilUsuario, int saldo) {
-        this.bancoM = bancoM;
+    public ComandoRetirar(Sucursal sucursal, PerfilUsuario perfilUsuario, int saldo) {
+        this.sucursal = sucursal;
         this.perfilUsuario = perfilUsuario;
         this.saldo = saldo;
     }
 
     @Override
     public void ejecutar() {
-        var cuenta = bancoM.sucursal.gestorCuentasConcurrente
+        var cuenta = this.sucursal.gestorCuentasConcurrente
                 .obtenerCuenta(
                         perfilUsuario.obtenerNombre()
                 );

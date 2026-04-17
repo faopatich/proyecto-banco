@@ -1,21 +1,22 @@
 package aplicacion.BancoM.menu.comandos.cliente;
 
 import aplicacion.BancoM.banco.BancoM;
+import aplicacion.BancoM.banco.Sucursal;
 import aplicacion.BancoM.menu.comandos.ComandoMenu;
 import aplicacion.BancoM.usuarios.PerfilUsuario;
 
 public class ComandoEliminarCuenta implements ComandoMenu {
-    private final BancoM bancoM;
+    private final Sucursal sucursal;
     private final PerfilUsuario perfilUsuario;
 
-    public ComandoEliminarCuenta(BancoM bancoM, PerfilUsuario perfilUsuario) {
-        this.bancoM = bancoM;
+    public ComandoEliminarCuenta(Sucursal sucursal, PerfilUsuario perfilUsuario) {
+        this.sucursal = sucursal;
         this.perfilUsuario = perfilUsuario;
     }
 
     @Override
     public void ejecutar() {
-        var resultado = this.bancoM
+        var resultado = this
                 .sucursal
                 .servicioCliente
                 .solicitarEliminarCuenta(this.perfilUsuario.generarCredenciales());

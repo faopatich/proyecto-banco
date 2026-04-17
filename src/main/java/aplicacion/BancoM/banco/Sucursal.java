@@ -11,6 +11,8 @@ import aplicacion.BancoM.banco.servicios.*;
 import aplicacion.BancoM.cuentas.CreadorCuenta;
 
 public class Sucursal {
+    public final String codigo;
+
     public final ServicioUsuario servicioUsuario;
     public final ServicioCliente servicioCliente;
     public final ServicioGestorCuentas servicioGestorCuentas;
@@ -27,7 +29,9 @@ public class Sucursal {
     public final GestorTransaccionesConcurrente gestorTransaccionesConcurrente;
     public final ServicioTransaccion servicioTransaccion;
 
-    public Sucursal() {
+    public Sucursal(String codigo) {
+        this.codigo = codigo;
+
         this.gestorRoles = new GestorRoles();
         this.gestorUsuarios = new GestorUsuarios(gestorRoles);
         this.gestorUsuariosConcurrente = new GestorUsuariosConcurrente(gestorUsuarios);
