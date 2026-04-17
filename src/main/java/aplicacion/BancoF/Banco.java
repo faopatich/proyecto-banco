@@ -38,7 +38,7 @@ public class Banco implements aplicacion.interfazComun.Banco {
     }
 
     @Override
-    public Menu login(Credenciales credenciales) {
+    public Menu login(Credenciales credenciales, String codigoSucursal) {
         String username = credenciales.usuario();
         String password = credenciales.contr();
 

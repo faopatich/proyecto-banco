@@ -40,7 +40,7 @@ public class BancoM implements Banco {
     }
 
     @Override
-    public Menu login(Credenciales credenciales) {
+    public Menu login(Credenciales credenciales, String codigoSucursal) {
         var credecialesUsuario = this.crearCredenciales(credenciales);
         if (!this.sucursal.gestorUsuariosConcurrente.verificarCredencialesUsuario(credecialesUsuario)) {
             return null;

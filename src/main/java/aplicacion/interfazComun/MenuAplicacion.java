@@ -14,7 +14,7 @@ public class MenuAplicacion implements Menu {
     public void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones) {
         while (true) {
             System.out.println("Menu de aplicación");
-            System.out.println(" - Ingrese en el formato: <banco> <usuario> <contraseña>\n");
+            System.out.println(" - Ingrese en el formato: <banco> <codigo-sucursal> <usuario> <contraseña>\n");
             System.out.print("> ");
             var comandoLogin = servicioEntrada.leer();
             var argumentos = this.separadorArgumentos.crear(comandoLogin);
@@ -25,7 +25,7 @@ public class MenuAplicacion implements Menu {
             if (argumentos[0].equals("salir")) {
                 break;
             }
-            var credenciales = new Credenciales(argumentos[1], argumentos[2]);
+            var credenciales = new Credenciales(argumentos[2], argumentos[3]);
             Banco banco;
             if (argumentos[0].equals("BancoF")) {
                 banco = this.bancoF;
@@ -35,7 +35,7 @@ public class MenuAplicacion implements Menu {
                 System.out.println("Banco especificado inválido\n");
                 continue;
             }
-            var menu = banco.login(credenciales);
+            var menu = banco.login(credenciales, argumentos[1]);
             if (menu == null) {
                 System.out.println("Credenciales inválidas para el banco especificado\n");
                 continue;
