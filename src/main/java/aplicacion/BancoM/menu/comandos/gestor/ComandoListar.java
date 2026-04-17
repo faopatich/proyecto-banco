@@ -19,7 +19,7 @@ public class ComandoListar implements ComandoMenu {
                 this.perfilUsuario.generarCredenciales()
         );
         if (operacionesPendientes.isEmpty()) {
-            System.out.println("Sin operaciones pendientes\n");
+            System.out.println("Sin operaciones pendientes");
         } else {
             System.out.println("Operaciones pendientes:");
         }
