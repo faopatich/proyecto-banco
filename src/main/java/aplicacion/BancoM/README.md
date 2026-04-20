@@ -34,8 +34,8 @@ credenciales y datos: su nombre de usuario (único), su
 contraseña, y su fecha de nacimiento (actualmente sin
 uso). Para crear un usuario, referirse a la clase
 [`GestorUsuariosConcurrente`](banco/concurrencia/GestorUsuariosConcurrente.java),
-que no está protegido pero su uso está destinado
-exclusivamente a crear y modificar usuarios de prubea,
+que no está protegida pero su uso está destinado
+exclusivamente a crear y modificar usuarios de prueba,
 al menos en las ejecuciones de prueba.
 
 ## Menú de cliente
