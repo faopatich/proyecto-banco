@@ -26,7 +26,7 @@ public class BancoMMenuCliente extends BancoMMenu {
         System.out.println(" 4. depositar");
         System.out.println(" 5. retirar");
         System.out.println(" 6. eliminar");
-        System.out.println(" 3. salir");
+        System.out.println(" 7. salir");
     }
 
     public void ejecutar(ServicioEntrada servicioEntrada, ManejadorTransacciones manejadorTransacciones) {
